@@ -1,0 +1,130 @@
+<?xml version="1.0"?>
+<?mso-application progid="Excel.Sheet"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:o="urn:schemas-microsoft-com:office:office"
+ xmlns:x="urn:schemas-microsoft-com:office:excel"
+ xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:html="http://www.w3.org/TR/REC-html40">
+ <DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
+  <Author>Haufe-Lexware GmbH &amp; Co. KG</Author>
+  <LastAuthor>Haufe-Lexware GmbH &amp; Co. KG</LastAuthor>
+  <Created>2012-02-01T12:31:29Z</Created>
+  <Version>14.00</Version>
+ </DocumentProperties>
+ <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
+  <AllowPNG/>
+ </OfficeDocumentSettings>
+ <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
+  <WindowHeight>12432</WindowHeight>
+  <WindowWidth>28800</WindowWidth>
+  <WindowTopX>0</WindowTopX>
+  <WindowTopY>0</WindowTopY>
+  <ProtectStructure>False</ProtectStructure>
+  <ProtectWindows>False</ProtectWindows>
+ </ExcelWorkbook>
+ <Styles>
+  <Style ss:ID="Default" ss:Name="Normal">
+   <Alignment ss:Vertical="Bottom"/>
+   <Borders/>
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"/>
+   <Interior/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s62">
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="20" ss:Color="#000000"
+    ss:Bold="1"/>
+  </Style>
+  <Style ss:ID="s63">
+   <Alignment ss:Horizontal="Right" ss:Vertical="Bottom"/>
+  </Style>
+  <Style ss:ID="s64">
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Double" ss:Weight="3"/>
+   </Borders>
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"
+    ss:Bold="1"/>
+  </Style>
+  <Style ss:ID="s65">
+   <Borders/>
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"
+    ss:Bold="1"/>
+  </Style>
+  <Style ss:ID="s66">
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <NumberFormat ss:Format="Short Date"/>
+  </Style>
+  <Style ss:ID="s67">
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <NumberFormat ss:Format="@"/>
+  </Style>
+  <Style ss:ID="s68">
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <NumberFormat ss:Format="h:mm;@"/>
+  </Style>
+  <Style ss:ID="s69">
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+  </Style>
+ </Styles>
+ <Names>
+  <NamedRange ss:Name="MA_Name" ss:RefersTo="=Tabelle1!R2C2"/>
+  <NamedRange ss:Name="PersNr" ss:RefersTo="=Tabelle1!R3C2"/>
+  <NamedRange ss:Name="TemplateStart" ss:RefersTo="=Tabelle1!R7C1"/>
+  <NamedRange ss:Name="Zeitraum" ss:RefersTo="=Tabelle1!R4C2"/>
+ </Names>
+ <Worksheet ss:Name="Tabelle1">
+  <Table ss:ExpandedColumnCount="13" ss:ExpandedRowCount="37" x:FullColumns="1"
+   x:FullRows="1" ss:DefaultColumnWidth="60" ss:DefaultRowHeight="15">
+   <Column ss:AutoFitWidth="0" ss:Width="88.800000000000011"/>
+   <Column ss:AutoFitWidth="0" ss:Width="58.8"/>
+   <Row ss:AutoFitHeight="0" ss:Height="26.25">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Stundenerfassung</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s63"><Data ss:Type="String">Name, Vorname:</Data></Cell>
+    <Cell><Data ss:Type="String">{{name}}</Data><NamedCell
+      ss:Name="MA_Name"/></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s63"><Data ss:Type="String">Personalnummer:</Data></Cell>
+    <Cell><Data ss:Type="String">{{personalnumber}}</Data><NamedCell ss:Name="PersNr"/></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s63"><Data ss:Type="String">Monat:</Data></Cell>
+    <Cell><Data ss:Type="String">{{date}}</Data><NamedCell ss:Name="Zeitraum"/></Cell>
+   </Row>
+   <Row ss:Index="6" ss:AutoFitHeight="0" ss:StyleID="s64">
+    <Cell ss:StyleID="s65"><Data ss:Type="String">Datum</Data></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="String">Wochentag</Data></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="String">Von</Data></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="String">Bis</Data></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="String">Von</Data></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="String">Bis</Data></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="String">Von</Data></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="String">Bis</Data></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="String">Von</Data></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="String">Bis</Data></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="String">Summe</Data></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="String">Datum</Data></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="String">Unterschrift</Data></Cell>
+   </Row>

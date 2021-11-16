@@ -1,0 +1,18 @@
+
+<Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s66"><Data ss:Type="DateTime">{{date}}</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">{{day}}</Data></Cell>
+    <Cell ss:StyleID="s68">{{from1}}</Cell>
+    <Cell ss:StyleID="s68">{{to1}}</Cell>
+    <Cell ss:StyleID="s68">{{from2}}</Cell>
+    <Cell ss:StyleID="s68">{{to2}}</Cell>
+    <Cell ss:StyleID="s68">{{from3}}</Cell>
+    <Cell ss:StyleID="s68">{{to3}}</Cell>
+    <Cell ss:StyleID="s68">{{from4}}</Cell>
+    <Cell ss:StyleID="s68">{{to4}}</Cell>
+    <Cell ss:StyleID="s68"
+     ss:Formula="=RC[-7]-RC[-8]+(RC[-7]&lt;RC[-8])+RC[-5]-RC[-6]+(RC[-5]&lt;RC[-6])+RC[-3]-RC[-4]+(RC[-3]&lt;RC[-4])+RC[-1]-RC[-2]+(RC[-1]&lt;RC[-2])"><Data
+      ss:Type="DateTime">{{duration}}</Data></Cell>
+    <Cell ss:StyleID="s69"/>
+    <Cell ss:StyleID="s69"/>
+</Row>

@@ -1,0 +1,123 @@
+access denied	attendance	en	Zugriff verweigert
+access granted	attendance	en	Zugriff gewährt
+active	attendance	en	Aktiv
+add	attendance	en	Add
+attendance	attendance	en	Zeiterfassung
+attendance time	attendance	en	Anwesenheitszeit
+attendance	common	en	Zeiterfassung
+attendance - define holidays	attendance	en	Zeiterfassung - Feiertagen verwalten
+attendance - manage	attendance	en	Zeiterfassung - Verwalten
+attendance - time	attendance	en	Anwesenheitszeit
+attendance - tracker	attendance	en	Zeiterfassung - Tracker
+bearbeiten	attendance	en	Bearbeiten
+benutzer	attendance	en	Benutzer
+benutzer:	attendance	en	Benutzer:
+cannot find the contract!	attendance	en	Kein Arbeitsvertrag vorhanden!
+category	attendance	en	Kategorie
+choose...	attendance	en	Auswählen
+close	attendance	en	Close
+contract - edit	attendance	en	Arbeitsvertrag - bearbeiten
+contracts - add	attendance	en	Arbeitsverträge - hinzufügen
+date	attendance	en	Datum
+day	attendance	en	Tag
+day(s)	attendance	en	Tag(e)
+debug	attendance	en	debug
+debuginfo	attendance	en	Debuginfo
+duration	attendance	en	Dauer
+end	attendance	en	End
+enddate	attendance	en	Enddatum
+ende:	attendance	en	Ende:
+first time here!	attendance	en	Das erste Mal hier!
+for your security, you must enter your password.	attendance	en	Für Ihre Sicherheit müssen Sie den Passwort abgeben.
+four-weekly	attendance	en	vierwöchentlich
+friday	attendance	en	Friday
+hinzufügen	attendance	en	Hinzufügen
+holiday	attendance	en	Feiertag
+holiday name	attendance	en	Name des Feiertages
+holidays	attendance	en	Feiertage
+holidays for this year	attendance	en	Feiertage dieses Jahr
+hour	attendance	en	Stunde
+hours	attendance	en	Stunden
+hours per week	attendance	en	Stunde(n) pro Woche
+id	attendance	en	ID
+last change:	attendance	en	Letzte Änderung:
+last month	attendance	en	Letzten Monat
+last time:</br>	attendance	en	last time:</br>
+last week	attendance	en	Letzte Woche
+last year	attendance	en	Letztes Jahr
+location	attendance	en	Location
+log in	attendance	en	Anmelden
+log out	attendance	en	Abmelden
+logged in	attendance	en	Angemeldet
+logged out	attendance	en	Abgemeldet
+login interval:	attendance	en	Login interval:
+logout interval:	attendance	en	Logout interval:
+löschen	attendance	en	Löschen
+monday	attendance	en	Monday
+nfc id	attendance	en	Nfc Id
+no category	attendance	en	Keine
+no results found!	attendance	en	Keine Ergebnisse gefunden!
+not active	attendance	en	Nicht Aktiv
+not started yet	attendance	en	-
+nothing	attendance	en	-
+ongoing work	attendance	en	Arbeitszeit aktuell
+only	attendance	en	Nur
+only the user itself can open this page	attendance	en	Nur der Benutzer selbst kann diese Seite öffnen
+password	attendance	en	Passwort
+password protection	attendance	en	Passwortschutz
+password:	attendance	en	Passwort
+refresh	attendance	en	Refresh
+remaining vacation	attendance	en	Resturlaub
+remaining vacation</br>	attendance	en	remaining vacation</br>
+rfid	attendance	en	RFID
+saturday	attendance	en	Saturday
+save	attendance	en	Save
+school	attendance	en	Schule
+search	attendance	en	search
+search for the title	attendance	en	Suche nach dem Titel
+security type	attendance	en	Sicherheitsstufe
+should today	attendance	en	Soll heute
+should today</br>	attendance	en	should today</br>
+sickness	attendance	en	Krankheit
+start	attendance	en	Start
+start:	attendance	en	Start:
+startdate	attendance	en	Startdatum
+started	attendance	en	Angemeldet seit
+started</br>	attendance	en	started</br>
+status	attendance	en	Status
+submit	attendance	en	Absenden
+sum	attendance	en	Summe
+sum this year	attendance	en	Summe in diesem Jahr
+sunday	attendance	en	Sunday
+this month	attendance	en	Diesen Monat
+this week	attendance	en	Diese Woche
+this year	attendance	en	Dieses Jahr
+three-weekly	attendance	en	dreiwöchentlich
+thursday	attendance	en	Thursday
+time account	attendance	en	Zeitkonto
+time account</br>	attendance	en	time account</br>
+title	attendance	en	Titel
+today	attendance	en	Heute
+today:	attendance	en	Datum und Uhrzeit:
+today:</br>	attendance	en	today:</br>
+tuesday	attendance	en	Tuesday
+two-weekly	attendance	en	zweiwöchentlich
+undefined contract	attendance	en	Unvollständiger Arbeitsvertrag
+urlaub	attendance	en	Urlaub
+user	attendance	en	Benutzer
+user - status	attendance	en	Benutzerstatus
+vacation	attendance	en	Urlaub
+vacations in a year	attendance	en	Jahresurlaub
+wednesday	attendance	en	Wednesday
+weekly	attendance	en	wöchentlich
+work	attendance	en	Arbeitszeit
+work contracts	attendance	en	Arbeitsverträge
+work tracker	attendance	en	Tracker
+working time today	attendance	en	Arbeitszeit heute
+working time today</br>	attendance	en	working time today</br>
+worktime	attendance	en	Arbeitszeit
+yesterday	attendance	en	Gestern
+you are logged in!	attendance	en	Sie sind angemeldet!
+you are logged out!	attendance	en	Sie sind abgemeldet!
+you dont have premission on this page.	attendance	en	Sie haben keinen Zugriff auf dieser Seite.
+your account is balanced	attendance	en	Zeitkonto ist ausgeglichen

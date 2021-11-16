@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!-- $Id$ -->
+<overlay>
+	<template id="attendance.manage.index.buttons" template="" lang="" group="0" version="16.1.013">
+		<grid>
+			<columns>
+				<column/>
+				<column/>
+			</columns>
+			<rows>
+				<row>
+					<button label="Add" id="add"/>
+					<button label="Only valid contracts" id="expired"/>
+				</row>
+			</rows>
+		</grid>
+	</template>
+</overlay>

@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<!-- $Id$ -->
+<overlay>
+	<template id="attendance.manage.index.rows" template="" lang="" group="0" version="16.1.013">
+		<grid>
+			<columns>
+				<column width="50"/>
+				<column width="120"/>
+				<column width="120"/>
+				<column width="120"/>
+				<column width="120"/>
+				<column width="120"/>
+				<column width="120"/>
+				<column width="120"/>
+				<column width="120"/>
+				<column width="200"/>
+				<column width="120"/>
+				<column/>
+				<column/>
+			</columns>
+			<rows>
+				<row class="th">
+					<description align="center" value="ID"/>
+					<description align="center" value="Benutzer"/>
+					<description align="center" value="Status"/>
+					<description align="center" value="Urlaub"/>
+					<description align="center" value="Remaining vacation"/>
+					<description align="center" value="Time Account"/>
+					<description align="center" value="Start"/>
+					<description align="center" value="End"/>
+					<description align="center" value="Nfc Id"/>
+					<description align="center" value="Security type"/>
+					<description align="center" value="Hours per Week"/>
+					<description/>
+					<description/>
+				</row>
+				<row class="row">
+					<description align="center" id="${row}[id]" readonly="true"/>
+					<menulist>
+						<menupopup type="select-account" align="center" id="${row}[user]" readonly="true"/>
+					</menulist>
+					<description align="center" id="${row}[status]"/>
+					<textbox type="float" align="center" id="${row}[vacation]" readonly="true"/>
+					<textbox type="integer" align="center" id="${row}[rest_vac]" readonly="true"/>
+					<textbox type="float" align="center" id="${row}[time_account]" readonly="true"/>
+					<date align="center" id="${row}[start]" readonly="true"/>
+					<date align="center" id="${row}[end]" readonly="true"/>
+					<description align="center" id="${row}[att_nfc]" readonly="true"/>
+					<description align="center" id="${row}[sec_type]" readonly="true"/>
+					<textbox type="float" align="center" id="${row}[total_week_hours]" readonly="true"/>
+					<button label="Bearbeiten" id="edit[$row_cont[id]]"/>
+					<button label="Löschen" id="delete[$row_cont[id]]"/>
+				</row>
+			</rows>
+		</grid>
+	</template>
+	<template id="attendance.manage.index2" template="" lang="" group="0" version="16.1.013">
+		<groupbox disabled="true" id="debuginfo">
+			<caption label="Debuginfo"/>
+			<grid>
+				<columns>
+					<column/>
+				</columns>
+				<rows>
+					<row>
+						<textbox multiline="true" id="message" no_lang="1" readonly="true"/>
+					</row>
+					<row>
+						<textbox lable="record-id" id="test_id" no_lang="1" readonly="true"/>
+					</row>
+				</rows>
+			</grid>
+		</groupbox>
+		<hrule disabled="true"/>
+		<button align="right" label="Add" id="add"/>
+		<nextmatch content="nm" id="con_table" template="attendance.manage.index.rows"/>
+		<checkbox disabled="true" label="debug" id="debug"/>
+	</template>
+</overlay>

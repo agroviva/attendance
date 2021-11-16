@@ -1,0 +1,115 @@
+<?php
+
+
+class en_US
+{
+    const APP_NAME = 'Attendance';											//
+    const USER_ACTIVE = 'Active';												//
+    const DEFINE_HOLIDAYS = 'Attendance - Define Holidays';						//
+    const MANAGE_ATTENDANCE = 'Attendance - Manage';								//
+    const TRACKER = 'Attendance - Tracker';								//
+    const EDIT_CONTRACT = 'Contract - Edit';									//
+    const ADD_CONTRACTS = 'Contracts - Add New';								//
+    const CANNOT_FIND_CON = 'Cannot find the contract!';							// review if it is used
+    const FIRST_TIME_HERE = 'First time here!';									//
+    const HOLIDAY_NAME = 'Holiday Name';										//
+    const HOLIDAYS = 'Holidays';											//
+    const HOLIDAYS_THIS_YEAR = 'Holidays for this year';								//
+    const HOUR = 'Hour';												//
+    const HOURS = 'Hours';												//
+    const HOURS_PER_WEEK = 'Hours per week';										//
+    const LOG_IN = 'Log in';												//
+    const LOG_OUT = 'Log out';											//
+    const LOGGED_IN = 'Logged in';											//
+    const YOU_LOGGED_IN = 'You are logged in!';									//
+    const LOGGED_OUT = 'Logged out';											//
+    const YOU_LOGGED_OUT = 'You are logged out!';								//
+    const NOT_ACTIVE = 'Not active';											//
+    const NOT_STARTED = 'Not started yet';									//
+    const NOTHING = 'Nothing';											//
+    const ONGOING_WORK = 'Ongoing Work';										//
+    const ONLY = 'Only';												//
+    const ATTENDANCE_STARTED = 'Started	attendance';								//
+    const SHOULD_TODAY = 'Should today';										//
+    const WORK_TIME_TODAY = 'Working time today';									//
+    const REMAINING_VACATION = 'Remaining vacation';									//
+    const REMAINING_VACATIONS = 'Remaining vacations';								//
+    const TIME_ACCOUNT = 'Time Account';										//
+    const TODAY = 'Today';												//
+    const YESTERDAY = 'Yesterday';											//
+    const THIS_WEEK = 'This Week';											//
+    const LAST_WEEK = 'Last Week';											//
+    const THIS_MONTH = 'This Month';											//
+    const LAST_MONTH = 'Last Month';											//
+    const THIS_YEAR = 'This Year';											//
+    const LAST_YEAR = 'Last Year';											//
+    const LAST_CHANGE = 'Last change:';										//
+    const DAY = 'Day';												//
+    const DAYS = 'Days';												//
+    const UNDEFINED_CONTRACT = 'Undefined Contract';									//
+    const USER_STATUS = 'User - Status';										//
+    const YEAR_VACATIONS = 'Annual Leave';										//
+    const WORK_CONTRACTS = 'Employment Contracts';								//
+    const WORK_CONTRACTS_2 = 'Employment Contracts 2';								//
+    const WORK_SCHEDULING = 'Work Schedule';										//
+    const WORK_TRACKER = 'Work Tracker';										//
+    const WORKTIME = 'Worktime';											//
+    const BALANCED_ACCOUNT = 'Your account is balanced';							//
+    const NO_PREMISSIONS = 'You dont have premission on this page.';				//
+    const ONLY_PREMISSIONS = 'Only the user itself can open this page';			//
+    const SECURITY = 'For your security, you must enter your password.'; 	//
+    const PASSWORD = 'Password';											//
+    const INCORRECT_PASSWORD = 'The password is not correct!';						//
+    const VACATION = 'Vacation';											//
+    const SCHOOL = 'School';												//
+    const HOLIDAY = 'Holiday';											//
+    const SICKNESS = 'Sickness';											//
+    const WORK = 'Work';												//
+    const STARTDATE = 'Startdate';											//
+    const ENDDATE = 'Enddate';											//
+    const TITLE = 'Title';												//
+    const CATEGORY = 'Category';											//
+    const DURATION = 'Duration';											//
+    const USER = 'User';												//
+    const STATUS = 'Status';												//
+    const DATE = 'Date';												//
+    const SUBMIT = 'Submit';												//
+    const NO_CATEGORY = 'No category';										//
+    const NO_RESULT = 'No results found!';									//
+    const SEARCH_TITLE = 'Search for the title';								//
+    const WEEKLY = 'weekly';												//
+    const TWO_WEEKLY = 'two-weekly';											//
+    const THREE_WEEKLY = 'three-weekly';										//
+    const FOUR_WEEKLY = 'four-weekly';										//
+    const CHOOSE = 'Choose...';											//
+    const ACCES_DENIED = 'Access denied';										//
+    const ACCES_GRANTED = 'Access granted';										//
+    const SECURITY_TYPE = 'Security type';										//
+    const PASSWORD_PROTECTION = 'Password protection';								//
+    const TIMESHEET = 'Timesheet';											//
+    const ATTENDANCE_TIME = 'attendance - Time';									//
+    const SUM = 'Sum';												//
+    const SUM_THIS_YEAR = 'Sum this year';										//
+    const TIME_INTERVAL = 'Time interval';										//
+    const ROUNDING_POINT = 'Rounding point';										//
+    const LOGIN_INTERVAL = 'Login interval';										//
+    const LOGOUT_INTERVAL = 'Logout interval';									//
+    const ROUNDUP = 'Roundup';											//
+    const ROUNDDOWN = 'Rounddown';											//
+    const EXPIRED = 'Expired';											//
+    const TIMESHEET_ID = 'Timesheet id';										// review
+    const DATE_AND_TIME = 'Date and Time';										//
+    const EXPORT = 'Export';												//
+    const ONLY_VALID_CONTRACTS = 'Only valid contracts';								//
+    const DOWNLOAD_AS_PDF = 'Download as PDF';									//
+    const DOWNLOAD_AS_EXCEL = 'Download as Excel';									//
+    const EXTRA_VACATION = 'Extra Vacation';										//
+    const BEFORE = 'Before';												//
+    const SETTINGS = 'Settings';											//
+    const LOGS = 'Logs';												//
+    const CUSTOM_DATE = 'Custom Date';										//
+
+    public function __construct()
+    {
+    }
+}

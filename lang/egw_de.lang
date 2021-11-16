@@ -1,0 +1,116 @@
+active	attendance	de	Angemeldet
+attendance	common	de	Zeiterfassung
+attendance - define holidays	attendance	de	Zeiterfassung - Feiertagen verwalten
+attendance - manage	attendance	de	Zeiterfassung - Verwalten
+attendance - tracker	attendance	de	Zeiterfassung - Tracker
+cannot find the contract!	attendance	de	Kein Arbeitsvertrag vorhanden!
+contract - edit	attendance	de	Arbeitsvertrag - bearbeiten
+contracts - add	attendance	de	Arbeitsverträge - hinzufügen
+first time here!	attendance	de	Das erste Mal hier!
+holiday name	attendance	de	Name des Feiertages
+holidays	attendance	de	Feiertage
+holidays for this year	attendance	de	Feiertage dieses Jahres
+hour	attendance	de	Stunde(n)
+hours	attendance	de	Stunden
+hours per week	attendance	de	Stunde(n) pro Woche
+log in	attendance	de	Anmelden
+log out	attendance	de	Abmelden
+logged in	attendance	de	Angemeldet
+logged out	attendance	de	Abgemeldet
+not active	attendance	de	Abgemeldet
+not started yet	attendance	de	-
+nothing	attendance	de	-
+ongoing work	attendance	de	Arbeitszeit aktuell
+only	attendance	de	Nur
+started	attendance	de	Angemeldet seit
+should today	attendance	de	Soll heute
+working time today	attendance	de	Arbeitszeit heute
+remaining vacation	attendance	de	Resturlaub
+time account	attendance	de	Zeitkonto
+today:	attendance	de	Datum und Uhrzeit:
+last change:	attendance	de	Letzte Änderung:
+day	attendance	de	Tag
+days	attendance	de Tage
+undefined contract	attendance	de	Unvollständiger Arbeitsvertrag
+user - status	attendance	de	Benutzerstatus
+vacations in a year	attendance	de	Jahresurlaub
+work contracts	attendance	de	Arbeitsverträge
+work contracts 1	attendance	de	Verwaltung
+work scheduling	attendance	de	Dienstplanung
+work tracker	attendance	de	Tracker
+worktime	attendance	de	Arbeitszeit
+your account is balanced	attendance	de	Zeitkonto ist ausgeglichen
+started	attendance	de	Angemeldet seit
+you dont have premission on this page.	attendance	de	Sie haben keinen Zugriff auf dieser Seite.
+only the user itself can open this page	attendance	de	Nur der Benutzer selbst kann diese Seite öffnen
+for your security, you must enter your password.	attendance	de	Für Ihre Sicherheit müssen Sie das Passwort abgeben.
+password:	attendance	de	Passwort
+the password is not correct!	attendance de	Das Passwort ist nicht richtig!
+vacation	attendance	de	Urlaub
+attendance	attendance	de	Zeiterfassung
+school	attendance	de	Schule
+holiday	attendance	de	Feiertag
+sickness	attendance	de	Krankheit
+work	attendance	de	Arbeitszeit
+startdate	attendance	de	Startdatum
+enddate	attendance	de	Enddatum
+title	attendance	de	Titel
+category	attendance	de	Kategorie
+duration	attendance	de	Dauer
+user	attendance	de	Benutzer
+status	attendance	de	Status
+date	attendance	de	Datum
+submit	attendance	de	Absenden
+no category	attendance	de	Keine
+no results found!	attendance	de	Keine Ergebnisse gefunden!
+search for the title	attendance	de	Suche nach dem Titel
+today	attendance	de	Heute
+yesterday	attendance	de	Gestern
+this week	attendance	de	Diese Woche
+last week	attendance	de	Letzte Woche
+this month	attendance	de	Diesen Monat
+last month	attendance	de	Letzten Monat
+this year	attendance	de	Dieses Jahr
+last year	attendance	de	Letztes Jahr
+weekly	attendance	de	wöchentlich
+two-weekly	attendance	de	zweiwöchentlich
+three-weekly	attendance	de	dreiwöchentlich
+four-weekly	attendance	de	vierwöchentlich
+choose...	attendance	de	Auswählen
+password	attendance	de	Passwort
+access denied	attendance	de	Zugriff verweigert
+access granted	attendance	de	Zugriff gewährt
+security type	attendance	de	Sicherheitsstufe
+password protection	attendance	de	Passwortschutz
+attendance time	attendance	de	Anwesenheitszeit
+time account	attendance	de	Zeitkonto
+remaining vacation	attendance	de	Resturlaub (*Vorjahr)
+remaining vacations	attendance	de	Resturlaub
+attendance - time	attendance	de	Anwesenheitszeit
+sum	attendance	de	Summe
+sum this year	attendance	de	Summe in diesem Jahr
+day(s)	attendance	de	Tag(e)
+you are logged in!	attendance	de	Sie sind angemeldet!
+you are logged out!	attendance	de	Sie sind abgemeldet!
+time interval	attendance	de	Intervall
+rounding point	attendance	de	Rundung
+login interval:	attendance	de	Anmeldungsintervall:
+logout interval:	attendance	de	Abmeldungsintervall:
+roundup	attendance	de	Aufrunden
+rounddown	attendance	de	Abrunden	
+expired	attendance	de	Abgelaufen
+timesheet id	attendance	de	Id-Nummer
+date and time	attendance	de	Datum und Uhrzeit
+export	attendance	de	Exportieren
+only valid contracts	attendance	de	Nur gültige Verträge
+download as pdf	attendance	de	Als PDF-Datei herunterladen
+download as excel	attendance	de	Als Excel-Datei herunterladen
+extra vacation	attendance	de	Urlaubskorrektur zu Beginn
+before	attendance	de	Vor
+start date	attendance	de	Startdatum
+end date	attendance	de	Enddatum
+settings	attendance	de	Einstellungen
+log	attendance	de	Protokoll
+today	attendance	de	heute
+yesterday	attendance	de	gestern
+custom date	attendance	de	Benutzerdefiniert

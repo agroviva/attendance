@@ -1,0 +1,136 @@
+<?xml version="1.0"?>
+<!-- $Id$ -->
+<overlay>
+	<template id="attendance.manage.add" template="" lang="" group="0" version="16.1.013">
+		<grid>
+			<columns>
+				<column/>
+				<column/>
+				<column/>
+			</columns>
+			<rows>
+				<row>
+					<description value="User"/>
+					<menulist>
+						<menupopup type="select-account" align="right" id="user"/>
+					</menulist>
+					<description/>
+				</row>
+				<row>
+					<description value="Vacations in a Year"/>
+					<textbox type="float" align="right" id="vacation"/>
+					<description/>
+				</row>
+				<row>
+					<description value="Start"/>
+					<date align="right" id="start"/>
+					<description/>
+				</row>
+				<row>
+					<description value="End"/>
+					<date align="right" id="end"/>
+					<description/>
+				</row>
+				<row>
+					<description value="Nfc Id"/>
+					<textbox type="float" align="right" id="att_nfc"/>
+					<description/>
+				</row>
+				<row>
+					<description value="Security type"/>
+					<menulist>
+						<menupopup align="right" id="sec_type"/>
+					</menulist>
+					<description/>
+				</row>
+				<row>
+					<description value="Password"/>
+					<textbox type="float" align="right" id="password"/>
+					<description/>
+				</row>
+				<row>
+					<hidden id="id"/>
+					<description align="right"/>
+					<description/>
+				</row>
+				<row>
+					<description value="Login interval:"/>
+					<html align="right" id="login_interval"/>
+					<description/>
+				</row>
+				<row>
+					<description value="Logout interval:"/>
+					<html align="right" id="logout_interval"/>
+					<description/>
+				</row>
+				<row>
+					<description/>
+					<description align="right"/>
+					<description/>
+				</row>
+				<row>
+					<description value="Monday"/>
+					<date-timeonly align="right" id="monday"/>
+					<menulist>
+						<menupopup id="mon_day_type"/>
+					</menulist>
+				</row>
+				<row>
+					<description value="Tuesday"/>
+					<date-timeonly align="right" id="tuesday"/>
+					<menulist>
+						<menupopup id="tue_day_type"/>
+					</menulist>
+				</row>
+				<row>
+					<description value="Wednesday"/>
+					<date-timeonly align="right" id="wednesday"/>
+					<menulist>
+						<menupopup id="wed_day_type"/>
+					</menulist>
+				</row>
+				<row>
+					<description value="Thursday"/>
+					<date-timeonly align="right" id="thursday"/>
+					<menulist>
+						<menupopup id="thu_day_type"/>
+					</menulist>
+				</row>
+				<row>
+					<description value="Friday"/>
+					<date-timeonly align="right" id="friday"/>
+					<menulist>
+						<menupopup id="fri_day_type"/>
+					</menulist>
+				</row>
+				<row>
+					<description value="Saturday"/>
+					<date-timeonly align="right" id="saturday"/>
+					<menulist>
+						<menupopup id="sat_day_type"/>
+					</menulist>
+				</row>
+				<row>
+					<description value="Sunday"/>
+					<date-timeonly align="right" id="sunday"/>
+					<menulist>
+						<menupopup id="sun_day_type"/>
+					</menulist>
+				</row>
+				<row>
+					<description/>
+					<description/>
+					<description/>
+				</row>
+				<row>
+					<button label="Cancel" id="cancel"/>
+					<button align="right" label="Save" id="save"/>
+					<description/>
+				</row>
+			</rows>
+		</grid>
+		<styles>body {
+    background: none;
+}</styles>
+	</template>
+</overlay>

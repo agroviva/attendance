@@ -1,0 +1,42 @@
+@media (max-width: 765px) {
+    #user_ui.slide {
+        top: 0px!important;
+        position: relative;
+    }
+
+    #user_ui.slide ~ #user_wrapper, #user_ui.slide ~ #content {
+        display: none;
+    }
+
+    #user_ui {
+        width: 100%!important;
+        height: 100%!important;
+        border-radius: 0;
+        overflow-y: scroll!important;
+    }
+
+    .buttonbox {
+        padding-bottom: 20px!important;
+        padding-top: 20px!important;
+    }
+
+    .dlg_button {
+        padding: 4px 8px;
+        margin: -6px 0px 10px 0px;
+    }
+
+    #data-logs {
+        display: inline-block!important;
+    }
+    .side {
+        width: 100%!important;
+        text-align: center;
+    }
+
+    ul#TimeEntries li div#title {
+        width: 30%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+}

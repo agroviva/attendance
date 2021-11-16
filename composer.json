@@ -1,0 +1,9 @@
+{
+    "require": {
+        "phpoffice/phpspreadsheet": "^1.0",
+        "mpdf/mpdf": "^7.0",
+        "guzzlehttp/guzzle": "^6.3",
+        "agroviva/egroupware-api": "^1.0",
+        "nesbot/carbon": "1.34.0"
+    }
+}

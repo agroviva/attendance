@@ -1,0 +1,526 @@
+#popupBox{
+    top: 0;
+    left: 0;
+    position: fixed;
+    width: 100%;
+    height: 120%;
+    background-color: grey;
+    display: none;
+}
+onstatus {
+    width: 800px;
+    margin: 50px auto;
+    height: 440px;
+}
+
+body {
+    background: grey;
+    width: 100%;
+    height: 100%;
+}
+div #attendance.tracker.status,
+table.status {
+    width: 100%;
+    height: 100%;
+}
+
+.tracker {
+    float: left;
+}
+
+.tracker td.sts {
+}
+
+.tracker img {
+    border-radius: 5px;
+    width: 170px;
+    height: 170px;
+}
+.tracker a[onclick] > img {
+  width: 170px;
+}
+
+.tracker .sts img{
+    margin-left: -16px;
+    margin-right: 0px;
+    margin-top: 108px;
+    margin-bottom: 0px;
+    width: 24px;
+    height: 24px;
+}
+
+.tracker tbody {
+    width: 100%;
+    margin-top: 0px;
+    margin-right: auto;
+    margin-bottom: 0px;
+    margin-left: auto;
+
+}
+
+img.photo {
+	width: 68px;
+	padding-right: 3px;
+	height: auto;
+	vertical-align: bottom;
+}
+
+.contact_jpegphoto{
+   height: 230px;
+   line-height: 6px;
+   width: 260px;
+   margin-top: 0px;
+   margin-right: 0px;
+   margin-bottom:-204px;
+   margin-left: 0px;
+}
+
+
+.tracker td.btitle{
+    width: 150px;
+    background: url('/egroupware/attendance/templates/default/images/details.png') repeat scroll 0% 0% transparent;
+    float: left;
+    border-radius: 3px;
+    margin-top: 140px;
+    margin-right: 0px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
+
+.tracker .table {
+    display: inline-table;
+    margin-left: 0px;
+    margin-right: -45px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    color: white;
+    transition: height 2s;
+}
+
+.tracker td {
+    display:block;
+    padding:10px;
+    font-size: 14px;
+}
+
+.tracker thead {
+    display: table;
+}
+
+.contracts td {
+    font-size: 11px;
+}
+
+.tracker body {
+    background: #DFDFDF;
+    font-family: 'Roboto', sans-serif;
+}
+
+.status tr {
+    line-height: 10px;
+    width: 260px;
+    margin-left: 20px;
+    margin-right: 0px;
+    margin-top: 0px;
+    margin-bottom: 40px;
+}
+
+.user {
+    width: 150px;
+    margin-left: 10px;
+    background: url('/egroupware/attendance/templates/default/images/details.png') repeat scroll 0% 0% transparent;
+    color: white;
+    line-height: 18px;
+    border-radius: 3px;
+}
+
+.status td {
+    padding: 8px;
+    font-family: monospace;
+    font-weight: 500;
+    font-size: 22px;
+}
+
+.status img {
+    width: 85px;
+    height: 50px;
+}
+
+.status .sts img {
+    position: absolute;
+    margin: -20px 0 0 230px;
+    width: 24px;
+    height: 24px;
+}
+.status td.sts {
+    position: absolute;
+    height: 0px;
+}
+
+.status a[onclick] > img {
+  width: 85px;
+}
+
+.status .et2_button {
+    background-color: green !important;
+    border: none !important;
+    border-radius: 3px;
+    color: white !important;
+    padding: 40px 80px;
+    margin: 0px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 32px;
+    cursor: pointer;
+    /*margin: -10px 32px 200px 30px;*/
+}
+
+.status .button {
+    cursor: pointer;
+    /*margin-left: 169px;
+    margin-right: 190px;
+    margin-top: -183px;
+    margin-bottom: 157px;*/
+}
+.status .button2 {
+    cursor: pointer;
+/*  margin-left: 580px;
+    margin-right: 190px;
+    margin-top: 274px;
+    margin-bottom: -380px;*/
+}
+
+table.tracker_status_buttons tr {
+    line-height: 96px;
+    height: 96px;
+}
+
+table {
+    border-collapse: inherit; 
+    border-spacing: 2px; 
+}
+
+td.small {
+    font-size: 14px !important;
+    line-height: 18px !important;
+}
+.sidebar,
+.data {
+    font-size: 16px !important;
+    line-height: 24px !important;
+}
+.sidebar span,
+.data span {
+    font-size: 24px !important;
+    line-height: 36px !important;
+}
+
+/*
+*   Stylesheet for the dialog box
+*/
+
+#white-background{
+    display: none;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    background-color: rgba(0, 0, 0, .4);
+    opacity: 50;
+    z-index: 9999;
+}
+            
+#dlgbox{
+    /*initially dialog box is hidden*/
+    display: none;
+    position: fixed;
+    width: 480px;
+    z-index: 9999;
+    border-radius: 10px;
+    background-color: #6a6a6a;
+    font-family: helvetica, arial, sans-serif;
+}
+            
+#dlg-header{
+    background-color: #ca1010;
+    color: white;
+    font-size: 20px;
+    padding: 10px;
+    margin: 10px 10px 0px 10px;
+    text-align: center;
+}
+            
+#dlg-body{
+    background-color: white;
+    color: black;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 10px;
+    margin: 0px 10px 0px 10px;
+    text-align: center;
+}
+            
+#dlg-footer{
+    background-color: #f2f2f2;
+    text-align: center;
+    padding: 10px;
+    margin: 0px 10px 10px 10px;
+}
+            
+#dlg-footer button{
+    background-color: #4267b2;
+    border-color: #4267b2;
+    color: #fff;
+    text-shadow: none;
+    padding: 0 8px;
+    box-shadow: none;
+    border: 1px solid;
+    border-radius: 2px;
+    box-sizing: content-box;
+    -webkit-font-smoothing: antialiased;
+    font-weight: bold;
+    position: relative;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 12px;
+    line-height: 22px;
+    cursor: pointer;
+    display: inline-block;
+    text-decoration: none;
+    white-space: nowrap;
+    margin-left: 4px;
+}
+
+/*
+*   Stylesheet for password box 
+*/
+
+.passwordBox {
+    left: 0;
+    display: block;
+    margin-bottom: -334px;
+
+}
+
+.background {
+    background-color: rgba(0, 0, 0, .4);
+    bottom: 0;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+}
+
+.box {
+    border-radius: 3px;
+    box-shadow: 0 2px 26px rgba(0, 0, 0, .3), 0 0 0 1px rgba(0, 0, 0, .1);
+    font-family: helvetica, arial, sans-serif;
+    margin: 0 auto 40px;
+    position: relative;
+    width: 445px;
+    margin-top: 70px;
+}
+
+.dialogBox {
+    background-color: #fff;
+    border-radius: 3px;
+    position: relative;
+}
+
+.boxcontent {
+    background-color: #ffffff;
+    padding: 12px;
+    font-size: 14px;
+    line-height: 18px;
+    border-radius: 6px 6px 0 0;
+}
+
+.mbm {
+    margin-bottom: 10px;
+}
+
+.small_img {
+    margin-right: 10px;
+    border-radius: 20px;
+    float: left;
+    height: 130px;
+    width: 130px;
+
+}
+
+.username {
+    overflow: hidden;
+}
+
+._6a {
+    display: inline-block;
+}
+
+._6b {
+    vertical-align: middle;
+}
+
+.fontstyle {
+    color: #333;
+    font-weight: bold;
+    font-size: 13px;
+}
+
+.security {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.inputpassword {
+    padding-bottom: 4px;
+    border: 1px solid #bdc7d8;
+    margin: 0;
+    padding: 3px;
+    -webkit-appearance: none;
+    -webkit-border-radius: 0;
+}
+
+.buttonbox {
+    background-color: #fff;
+    padding: 12px 0;
+    border-top: 1px solid #dddfe2;
+    margin: 0 12px;
+    padding: 15px 0;
+    text-align: right;
+}
+
+.cancel {
+    color: #4b4f56;
+    text-shadow: none;
+}
+
+.cancel:hover {
+     background-color: #e9ebee;
+}
+
+.dlg_button {
+    padding: 0 8px;
+    background: #f6f7f9;
+    box-shadow: none;
+    border: 1px solid;
+    border-radius: 2px;
+    box-sizing: content-box;
+    -webkit-font-smoothing: antialiased;
+    font-weight: bold;
+    position: relative;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 12px;
+    line-height: 22px;
+    cursor: pointer;
+    display: inline-block;
+    text-decoration: none;
+    white-space: nowrap;
+    margin-left: 4px;
+}
+
+.submit:hover {
+    background-color: #365899;
+    border-color: #365899;
+    color: #fff;
+}
+
+.submit {
+    background-color: #4267b2;
+    border-color: #4267b2;
+    color: #fff;
+    text-shadow: none;
+}
+
+h1{
+					  font-size: 30px;
+					  color: #fff;
+					  text-transform: uppercase;
+					  font-weight: 300;
+					  text-align: center;
+					  margin-bottom: 15px;
+					}
+					table{
+					  width:100%;
+					  table-layout: fixed;
+					  border-collapse: collapse!important;
+					}
+					.tbl-header{
+					  background-color: rgba(255,255,255,0.3);
+					 }
+					.tbl-content{
+					  height:300px;
+					  overflow-x:auto;
+					  margin-top: 0px;
+					  border: 1px solid rgba(255,255,255,0.3);
+					}
+					th{
+					  padding: 20px 15px;
+					  text-align: left;
+					  font-weight: 500;
+					  font-size: 12px;
+					  color: #fff;
+					  text-transform: uppercase;
+					}
+					td{
+					  padding: 15px;
+					  text-align: left;
+					  vertical-align:middle;
+					  font-weight: 300;
+					  font-size: 12px;
+					  color: #fff;
+					  border-bottom: solid 1px rgba(255,255,255,0.1);
+					}
+
+					/* demo styles */
+
+					@import url(http://fonts.googleapis.com/css?family=Roboto:400,500,300,700);
+					body{
+					  background: -webkit-linear-gradient(left, #25c481, #25b7c4);
+					  background: linear-gradient(to right, #25c481, #25b7c4);
+					  font-family: 'Roboto', sans-serif;
+					}
+					section{
+					  margin: 50px;
+					}
+
+
+					/* follow me template */
+					.made-with-love {
+					  margin-top: 40px;
+					  padding: 10px;
+					  clear: left;
+					  text-align: center;
+					  font-size: 10px;
+					  font-family: arial;
+					  color: #fff;
+					}
+					.made-with-love i {
+					  font-style: normal;
+					  color: #F50057;
+					  font-size: 14px;
+					  position: relative;
+					  top: 2px;
+					}
+					.made-with-love a {
+					  color: #fff;
+					  text-decoration: none;
+					}
+					.made-with-love a:hover {
+					  text-decoration: underline;
+					}
+
+
+					/* for custom scrollbar for webkit browser
+
+					::-webkit-scrollbar {
+					    width: 6px;
+					} 
+					::-webkit-scrollbar-track {
+					    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+					} 
+					::-webkit-scrollbar-thumb {
+					    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+					} */

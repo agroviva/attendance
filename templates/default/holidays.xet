@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<!-- $Id$ -->
+<overlay>
+	<template id="attendance.holidays.view" template="" lang="" group="0" version="16.1.013">
+		<grid>
+			<columns>
+				<column width="50"/>
+				<column width="200"/>
+				<column width="200"/>
+			</columns>
+			<rows>
+				<row class="th">
+					<description align="center" value="Location"/>
+					<description align="center" value="Holiday Name"/>
+					<description align="center" value="Date"/>
+				</row>
+				<row class="row">
+					<description align="center" id="${row}[state]" readonly="true"/>
+					<description align="center" id="${row}[name]" readonly="true"/>
+					<description align="center" id="${row}[date]" readonly="true"/>
+				</row>
+			</rows>
+		</grid>
+	</template>
+	<template id="attendance.holidays" template="" lang="" group="0" version="16.1.013">
+		<grid>
+			<columns>
+				<column/>
+				<column/>
+			</columns>
+			<rows>
+				<row class="th">
+					<description value="Holidays for this Year"/>
+					<button label="Holidays" onclick="window.location.href='/egroupware/index.php?menuaction=calendar.uiholiday.admin'; return false;"/>
+				</row>
+				<row>
+					<description/>
+					<description/>
+				</row>
+				<row>
+					<template id="attendance.holidays.view"/>
+					<description/>
+				</row>
+			</rows>
+		</grid>
+		<styles>body {
+    background: none;
+}</styles>
+	</template>
+</overlay>

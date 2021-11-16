@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!-- $Id$ -->
+<overlay>
+	<template id="attendance.holidays.view" template="" lang="" group="0" version="16.1.013">
+		<grid>
+			<columns>
+				<column width="50"/>
+				<column width="200"/>
+				<column width="200"/>
+			</columns>
+			<rows>
+				<row class="th">
+					<description align="center" value="Location"/>
+					<description align="center" value="Holiday Name"/>
+					<description align="center" value="Date"/>
+				</row>
+				<row class="row">
+					<description align="center" id="${row}[state]" readonly="true"/>
+					<description align="center" id="${row}[name]" readonly="true"/>
+					<description align="center" id="${row}[date]" readonly="true"/>
+				</row>
+			</rows>
+		</grid>
+	</template>
+</overlay>

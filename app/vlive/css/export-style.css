@@ -1,0 +1,80 @@
+body {
+    font-family: Roboto, Arial !important;
+    overflow: scroll!important;
+}
+
+body ::-webkit-scrollbar,body::-webkit-scrollbar {
+    width: 4px;
+    background: #fff;
+}
+
+form[name=eTemplate] {
+    display: none;
+}
+
+body ::-webkit-scrollbar-button:vertical:end:decrement,body ::-webkit-scrollbar-button:vertical:start:increment,body::-webkit-scrollbar-button:vertical:end:decrement,body::-webkit-scrollbar-button:vertical:start:increment {
+    display: none
+}
+
+body ::-webkit-scrollbar-thumb:vertical,body::-webkit-scrollbar-thumb:vertical {
+    background: #da6d0d;
+}
+
+table {
+    font-size: 14px;
+    border-collapse: collapse;
+    width: 100%!important;
+    background-color: none;
+}
+
+th, td {
+    text-align: center!important;
+    padding: 8px!important;
+    border: 1px solid black;
+}
+
+hr {
+    color: black;
+}
+
+th {
+    font-size: 15px!important;
+} 
+
+.date {
+    width: 40%;
+    margin-top: 55px;
+    margin-bottom: 20px;
+    border-top: 1px solid #9a9a9a;
+    padding-top: 8px;
+}
+
+.first_sign {
+    width: 43%;
+    float:left;
+    border-top: 1px solid #9a9a9a;
+    padding-top: 8px;
+}
+
+.second_sign {
+    width: 40%;
+    float:left;
+    border-top: 1px solid #9a9a9a;
+    padding-top: 8px;
+    margin-left: 40px;
+}
+
+.left_pane {
+    float: left;
+    width: 80%;
+}
+
+.right_pane {
+    max-width: 20%;
+    float: left;
+    overflow: hidden;
+}
+
+tr.day_bold {
+    border: 2px solid black;
+}

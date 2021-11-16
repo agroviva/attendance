@@ -1,0 +1,446 @@
+/* for custom scrollbar for webkit browser
+
+::-webkit-scrollbar {
+    width: 6px;
+} 
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+} 
+::-webkit-scrollbar-thumb {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+} */
+
+body {
+    background: #b9b9b9;
+    font-family: Roboto, Arial !important;
+    overflow: scroll!important;
+}
+
+body ::-webkit-scrollbar,body::-webkit-scrollbar {
+    width: 4px;
+    background: #fff;
+}
+
+form[name=eTemplate] {
+    display: none;
+}
+
+body ::-webkit-scrollbar-button:vertical:end:decrement,body ::-webkit-scrollbar-button:vertical:start:increment,body::-webkit-scrollbar-button:vertical:end:decrement,body::-webkit-scrollbar-button:vertical:start:increment {
+    display: none
+}
+
+body ::-webkit-scrollbar-thumb:vertical,body::-webkit-scrollbar-thumb:vertical {
+    background: #da6d0d;
+}
+
+.submit_button {
+    padding: 0 8px!important;
+    background: #f6f7f9!important;
+    box-shadow: none!important;
+    border: 1px solid!important;
+    border-radius: 2px!important;
+    box-sizing: content-box!important;
+    font-weight: bold!important;
+    font-size: 12px!important;
+    cursor: pointer!important;
+    display: inline-block!important;
+    white-space: nowrap!important;
+    margin-left: 4px!important;
+    background-color: #4267b2!important;
+    border-color: #4267b2!important;
+    color: #fff!important;
+    text-shadow: none!important;
+    width: 80px!important;
+    height: 30px!important;
+}
+
+.dropdown {
+    display: none;
+}
+
+#table div {
+    float: left;
+}
+
+#filter {
+    overflow: hidden;
+    padding: 1px 10px 0px 10px;
+}
+
+div.column-2 {
+    float: left;
+    width: 50%;
+}
+
+select, input, button {
+    padding: 1px 1px 1px 1px;
+    background: none;
+    width: auto;
+    height: auto;
+}
+
+li {
+    list-style-type: none;
+}
+
+#table div.filter_frame {
+    padding: 15px 30px 15px 30px;
+    border-radius: 2px;
+    border-left: 1px solid #96a096;
+    -webkit-user-select: none;  /* Chrome all / Safari all */
+    -moz-user-select: none;     /* Firefox all */
+    -ms-user-select: none;      /* IE 10+ */
+    user-select: none;          /* Likely future */   
+    cursor: pointer;
+    background-color: #9e9e9e;
+    color: white;
+    font-size: 14px!important;
+}
+
+#table div.filter_frame:hover {
+    background-color: #7f8288;
+}
+
+#table ul {
+    padding: inherit;
+    display: block;
+    text-align: right;
+}
+
+.list {
+    padding: 0;
+    margin: 0 0 0 -1px;
+    display: inline-block;
+}
+
+.down_white_icon {
+    padding-left: 10px;
+    margin-bottom: 1px;
+}
+
+.dropdown-filter.active {
+    opacity: 1;
+    height: auto;
+}
+
+.dropdown-filter {
+    width: 200px;
+    background: #9e9e9e;
+    position: absolute;
+    display: block;
+    -webkit-transition: opacity .35s,height .35s;
+    transition: opacity .35s,height .35s;
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+    border-radius: 0 0 4px 4px;
+    box-shadow: 0px 1px 4px rgba(0,0,0,0.3);
+    z-index: 10;
+    margin-left: -30px;
+    margin-top: 15px;
+}
+
+.dropdown-filter span {
+    display: block;
+    text-align: left;
+    padding: 12px 15px;
+    border-bottom: 1px solid #c3c3c3;
+    font-size: 12px;
+    -webkit-transition: background .35s;
+    transition: background .35s;
+    color: white;
+}
+
+.dropdown-filter span:hover {
+    background: #737070;
+}
+
+#filter .dropdown-filter .selected {
+    background-color: #da6d0d;
+}
+
+#filter .dropdown-filter .selected:hover {
+    background: #ab5a12;
+}
+
+.exportOptions {
+    display: flex;
+    width: 120px;
+    height: 46px;
+}
+.exportOptions div {
+    padding: 0 8px;
+    width: 100%;
+    cursor: pointer;
+}
+
+.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+ul#TimeEntries, ul#TimeEntries li ul {
+    padding: 0;
+}
+    
+ul#TimeEntries, ul#TimeEntries ul {
+    padding: 0 10px 0px 10px;
+}
+
+ul#TimeEntries ul.select-cat li {
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+ul#TimeEntries li {
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    height: 60px;
+    font-size: 14px;
+    line-height: 60px;
+    background-color: #fff;
+    box-shadow: inset 0 1px 0 0 #eceded;
+}
+
+ul#TimeEntries li div div {
+    float: left;
+    /* padding: 15px 10px 15px 20px; */
+    font-size: 14px;
+    text-align: center;
+    width: 100%;
+    transition: 0.2s all;
+}
+
+ul#TimeEntries, ul#TimeEntries li{
+    overflow: hidden;
+}
+
+ul#TimeEntries li div div.s_date {
+    margin-top: -50px;
+}
+
+ul#TimeEntries li div.date .s_time {
+    margin-top: -10px;
+}
+
+/*ul#TimeEntries li div div.s_date {
+    margin-top: -50px;
+    display: none;
+}
+
+ul#TimeEntries li div.date:hover .s_date {
+    display: block;
+}
+
+ul#TimeEntries li div.date:hover .s_time {
+    margin-top: -10px;
+}*/
+
+ul#TimeEntries li div#title {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 1 auto;
+    flex: 0 1 auto;
+    max-width: 50%;
+    min-width: 30%;
+    height: 60px;
+    margin: 0 15px;
+}
+
+ul#TimeEntries li div#duration {
+    position: relative;
+    -webkit-box-flex: 0;
+    -ms-flex: 0 1 auto;
+    flex: 0 1 auto;
+    padding: 0 5px;
+    min-width: 8%;
+    margin-left: auto;
+}
+
+ul#TimeEntries li div#category {
+    cursor: pointer;
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+}
+
+ul#TimeEntries li div .Circle {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    vertical-align: middle;
+    margin: 0 10px 2px 0;
+    border-radius: 50%;
+}
+
+ul#TimeEntries li div.username {
+    padding: 0 26px 0 10px;
+    max-width: 8%;
+    min-width: 8%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+ul#TimeEntries li div.date {
+    max-width: 10%;
+    min-width: 10%;
+    cursor: pointer;
+}
+
+.cat_NaN {
+    background-color: #999;
+}
+
+#preloader {
+    position: fixed;
+    display: none;
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    vertical-align: middle;
+    background: #fff;
+    z-index: 9;
+    opacity: 0.5;
+    margin-top: 10px;
+}
+
+.preloader-container {
+    position: relative;
+    display: table-cell;
+    vertical-align: middle;
+    z-index: 3;
+    text-align: center;
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(20px);
+    -ms-transform: translateY(20px);
+    transform: translateY(20px);
+  }
+
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    -ms-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
+
+.fadeInUp {
+  -webkit-animation-name: fadeInUp;
+  animation-name: fadeInUp;
+}
+
+.custom_date {
+    margin-top: 16px;
+}
+.custom_date input {
+    background: white;
+    width: 48%;
+    padding: 0;
+    margin: 0;
+    position: relative;
+    font-size: 13px;
+    min-width: 60px;
+    height: 35px;
+    float: left;
+    overflow: hidden;
+    -webkit-transition: width 0.3s;
+    -moz-transition: width 0.3s;
+    transition: width 0.3s;
+    -webkit-backface-visibility: hidden;
+}
+
+@media (max-width: 1369px) {
+  #table div.filter_frame {
+    padding: 15px;
+  }
+}
+
+@media (max-width: 1068px) {
+  #table div.filter_frame {
+    padding: 15px 40px;
+  }
+
+  #filter .column-2 {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  #table div.filter_frame {
+    padding: 15px 30px;
+  }
+}
+
+@media (max-width: 667px) {
+    #table div.filter_frame {
+    padding: 15px;
+    }
+
+    ul#TimeEntries div#category, ul#TimeEntries div#duration {
+    display: none!important;
+    }
+
+    ul#TimeEntries li div.username {
+        max-width: 40%;
+        min-width: 40%;
+    }
+
+    ul#TimeEntries li div.date {
+        max-width: 70px;
+        min-width: 70px;
+    }
+}
+
+@media (min-width: 415px) and (max-width: 517px) {
+  #table div.filter_frame {
+    padding: 15px 5px;
+  }
+}
+
+@media (max-width: 414px) {
+    #table ul {
+        height: auto;
+        left: 0;
+        right: 0;
+    }
+
+    #table ul li {
+        width: 100%;
+    }
+
+    #table ul li div.filter_frame {
+       width: 100%;
+       text-align: left;
+       border-bottom: 1px solid #c3c3c3;
+       padding: 15px 0px;
+    }
+
+    #filter {
+        height: 190px;
+        width: 100%;
+    }
+
+    .dropdown-filter {
+        margin-left: 0;
+    }
+
+    ul#TimeEntries{
+        padding: 0;
+    }
+}
+
+@media (max-width: 517px) {
+    ul#TimeEntries li div.username {
+        max-width: 25%;
+        min-width: 25%;
+    }
+}

@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!-- $Id$ -->
+<overlay>
+	<template id="attendance.attendance_time" template="" lang="" group="0" version="16.1.013">
+		<grid>
+			<columns>
+				<column/>
+			</columns>
+			<rows>
+				<row>
+					<template id="attendance.tracker.index.rows" content="nm"/>
+				</row>
+			</rows>
+		</grid>
+	</template>
+</overlay>
