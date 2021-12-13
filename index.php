@@ -1,5 +1,6 @@
 <?php
 
+/*
 $_GET['cd'] = 'no';
 $GLOBALS['egw_info']['flags'] = [
     'currentapp'    => 'attendance',
@@ -8,3 +9,6 @@ $GLOBALS['egw_info']['flags'] = [
 ];
 include '../header.inc.php';
 $GLOBALS['egw']->redirect_link('/egroupware/attendance/app/index.php');
+*/
+
+include dirname(__FILE__).'/app/index.php';
