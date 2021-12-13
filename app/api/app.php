@@ -70,7 +70,7 @@ if (!function_exists("mylog")) {
 set_error_handler("errorHandler");
 register_shutdown_function("shutdownHandler");
 
-require_once __DIR__.'/../../../../agroviva/vendor/autoload.php';
+require_once __DIR__.'/../../../agroviva/vendor/autoload.php';
 
 if (!defined('APPDIR')) {
     define('APPDIR', dirname(__DIR__));
