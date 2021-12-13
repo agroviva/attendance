@@ -17,7 +17,7 @@ use EGroupware\Api;
 use EGroupware\Api\Framework;
 use EGroupware\Api\Header\ContentSecurityPolicy as CSP;
 
-require EGW_INCLUDE_ROOT.'/attendance/app/vlive/api/app.php';
+require EGW_INCLUDE_ROOT.'/attendance/app/api/app.php';
 
 class attendance_ui
 {
@@ -184,7 +184,7 @@ class attendance_ui
 
     public function add($content = [])
     {
-        Framework::includeJS('/attendance/app/vlive/js/contract.js');
+        Framework::includeJS('/attendance/app/js/contract.js');
         include TEMPLATE.'/add_new_contract.php';
 
         $tpl = new etemplate('attendance.manage.add');
@@ -194,7 +194,7 @@ class attendance_ui
 
     public function edit($content, $id = false)
     {
-        Framework::includeJS('/attendance/app/vlive/js/contract.js');
+        Framework::includeJS('/attendance/app/js/contract.js');
         include TEMPLATE.'/edit_contract.php';
 
         $tpl = new etemplate('attendance.manage.edit');

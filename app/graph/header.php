@@ -11,6 +11,6 @@
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <!-- <link href="/egroupware/attendance/material/assets/demo/demo.css" rel="stylesheet" /> -->
   <script src="/egroupware/attendance/material/assets/js/core/jquery.min.js" type="text/javascript"></script>
-  <script src="/egroupware/attendance/app/vlive/js/jquery-ui.js" type="text/javascript"></script>
+  <script src="/egroupware/attendance/app/js/jquery-ui.js" type="text/javascript"></script>
 </head>
 <body>

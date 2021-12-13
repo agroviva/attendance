@@ -10,8 +10,8 @@
 <script src="/egroupware/attendance/material/assets/js/plugins/jquery.sharrre.js" type="text/javascript"></script>
 <!-- Control Center for Material Kit: parallax effects, scripts for the example pages etc -->
 <script src="/egroupware/attendance/material/assets/js/material-kit.js?v=2.0.4" type="text/javascript"></script>
-<script type="text/javascript" src="/egroupware/attendance/app/vlive/js/sweetalert.min.js"></script>
-<script type="text/javascript" src="/egroupware/attendance/app/vlive/js/Contracts.js"></script>
+<script type="text/javascript" src="/egroupware/attendance/app/js/sweetalert.min.js"></script>
+<script type="text/javascript" src="/egroupware/attendance/app/js/Contracts.js"></script>
 <script type="text/javascript">
 	function processRelativeTime$2(number, withoutSuffix, key, isFuture) {
 		var format = {

@@ -71,7 +71,7 @@ function reports(id) {
 		params += "&categories=" + btoa(categories);
 	}
 
-	var url = "/egroupware/attendance/app/vlive/api/export/"+params;
+	var url = "/egroupware/attendance/app/api/export/"+params;
 
 	if (id == "excel"){
 		var files = [];
@@ -81,7 +81,7 @@ function reports(id) {
 			multiDownload(files);
 		} else {
 			users.each(function(index, elem){
-				url = "/egroupware/attendance/app/vlive/api/export/?type="+id+"&owner="+elem.id+"&date="+range+"&dates="+dates;
+				url = "/egroupware/attendance/app/api/export/?type="+id+"&owner="+elem.id+"&date="+range+"&dates="+dates;
 				files.push(url);
 			});
 			multiDownload(files);

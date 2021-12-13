@@ -26,7 +26,7 @@ usort($contracts, function ($x, $y) {
 
 Graph::Render('header');
 ?>
-<link rel="stylesheet" type="text/css" href="/egroupware/attendance/app/vlive/css/contracts.css">
+<link rel="stylesheet" type="text/css" href="/egroupware/attendance/app/css/contracts.css">
 <div>
 	<div class="modal fade bd-example-modal-lg" id="NewContract" role="" tabindex="-1">
 		<div class="modal-dialog modal-login" role="document">

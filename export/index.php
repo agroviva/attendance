@@ -2,6 +2,6 @@
 
 use Attendance\Export;
 
-require_once __DIR__.'/../app/vlive/api/app.php';
+require_once __DIR__.'/../app/api/app.php';
 
 Export::Route();

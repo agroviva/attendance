@@ -19,11 +19,11 @@ $so = new attendance_so();
 	<link rel="apple-touch-icon" sizes="167x167" href="/egroupware/attendance/templates/default/images/navbar.png">
 	<link rel="apple-touch-icon" sizes="180x180" href="/egroupware/attendance/templates/default/images/navbar.png">
 	<link rel="stylesheet" type="text/css" href="/egroupware/attendance/app/css/app.css.php">
-	<link rel="stylesheet" href="/egroupware/attendance/app/vlive/css/jquery.numpad.css">
+	<link rel="stylesheet" href="/egroupware/attendance/app/css/jquery.numpad.css">
 
-	<script src="/egroupware/attendance/app/vlive/js/jquery.js"></script>
-	<script src="/egroupware/attendance/app/vlive/js/jquery.numpad.js"></script>
-	<script src="/egroupware/attendance/app/vlive/js/attendance.js"></script>
+	<script src="/egroupware/attendance/app/js/jquery.js"></script>
+	<script src="/egroupware/attendance/app/js/jquery.numpad.js"></script>
+	<script src="/egroupware/attendance/app/js/attendance.js"></script>
 </head>
 <body>
 <?php

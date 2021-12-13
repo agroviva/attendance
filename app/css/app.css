@@ -1,6 +1,6 @@
-@import url("/egroupware/attendance/app/vlive/css/desktop.css");
+@import url("/egroupware/attendance/app/css/desktop.css");
 
-@import url('/egroupware/attendance/app/vlive/css/mobile.css');
+@import url('/egroupware/attendance/app/css/mobile.css');
 
 /*
 	@import url('/egroupware/attendance/css/mobile.css') (max-width: 1024px);

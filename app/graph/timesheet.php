@@ -56,10 +56,10 @@ $thisMonth = $startOfMonth->format("d.m.Y")." - ".$endOfMonth->format("d.m.Y");
 	$date = $_POST['date'];
 	$user = $_POST['user'];
 	?>
-<link rel="stylesheet" type="text/css" href="/egroupware/attendance/app/vlive/css/timesheet.css">
-<link rel="stylesheet" type="text/css" href="/egroupware/attendance/app/vlive/css/pikaday.css">
-<script type="text/javascript" src="/egroupware/attendance/app/vlive/js/jquery.js"></script><!-- 
-<script type="text/javascript" src="/egroupware/attendance/app/vlive/js/moment.min.js">></script>
+<link rel="stylesheet" type="text/css" href="/egroupware/attendance/app/css/timesheet.css">
+<link rel="stylesheet" type="text/css" href="/egroupware/attendance/app/css/pikaday.css">
+<script type="text/javascript" src="/egroupware/attendance/app/js/jquery.js"></script><!-- 
+<script type="text/javascript" src="/egroupware/attendance/app/js/moment.min.js">></script>
  -->
 
 
@@ -181,8 +181,8 @@ foreach (DB::GetAll($result) as $row) {
 ?> 
 </ul>
 </table>
-<script type="text/javascript" src="/egroupware/attendance/app/vlive/js/timesheet.js"></script>
-<script type="text/javascript" src="/egroupware/attendance/app/vlive/js/download.js"></script>
+<script type="text/javascript" src="/egroupware/attendance/app/js/timesheet.js"></script>
+<script type="text/javascript" src="/egroupware/attendance/app/js/download.js"></script>
 </div>
 </body>
 </html>
