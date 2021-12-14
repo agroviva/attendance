@@ -35,7 +35,7 @@ class attendance_hooks
         $file = [
             'Work Tracker' => Egw::link('/egroupware/attendance/graph/tracker/'),
         ];
-        display_sidebox($appname, $title.'', $file);
+        display_sidebox($appname, $menu_title, $file);
 
         $isManager = Core::isManager($GLOBALS['egw_info']['user']['account_id']);
         if ($isManager) {
