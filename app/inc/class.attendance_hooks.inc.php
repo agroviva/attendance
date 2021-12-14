@@ -11,6 +11,9 @@
 
 # Autoload Classes
 require_once __DIR__.'/../classes/autoload.php';
+# Autoload Third Party Libraries
+require_once __DIR__.'/../../../agroviva/vendor/autoload.php';
+
 
 use Attendance\Core;
 use EGroupware\Api\Egw;
