@@ -12,7 +12,7 @@ class Holidays
     public static function Render($country_code, $yearShift = 0)
     {
         $filename = $country_code.'_Holidays.json';
-        $path = APPDIR.'/../../holidays/'.$filename;
+        $path = APPDIR.'/holidays/'.$filename;
 
         if (file_exists($path)) {
             $data = json_decode(file_get_contents($path), true);
