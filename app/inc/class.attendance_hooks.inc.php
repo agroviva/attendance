@@ -47,7 +47,7 @@ class attendance_hooks
 		unset($hook_data);	// not used, but required by function signature
 
 		$appname = 'attendance';
-		$menu_title = lang($GLOBALS['egw_info']['apps'][$appname]['title']);
+		$menu_title = "Zeiterfassung";
 
         $file = [
             'Work Tracker' => Egw::link('/egroupware/attendance/graph/tracker/'),
