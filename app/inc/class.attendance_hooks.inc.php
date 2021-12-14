@@ -63,6 +63,7 @@ class attendance_hooks
 	 * @param array|string $hook_data
 	 */
     public static function admin($hook_data){
+		$title = $appname = 'attendance';
 
 		unset($hook_data);	// not used, but required by function signature
 
@@ -70,6 +71,7 @@ class attendance_hooks
             'Settings' => Egw::link('/egroupware/attendance/graph/settings/'),
         ];
 
-        display_sidebox($appname, 'Administrator', $file);
+        # display_sidebox($appname, 'Administrator', $file);
+		display_section($appname,$title,$file);
     }
 }
