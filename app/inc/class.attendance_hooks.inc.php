@@ -35,23 +35,22 @@ class attendance_hooks
             ];
             display_sidebox($appname, $menu_title, $file);
 
+            $isManager = Core::isManager($GLOBALS['egw_info']['user']['account_id']);
+            if ($isManager) {
+                $file = [
+                    'Arbeitsverträge' => Egw::link('/egroupware/attendance/graph/manage/'),
+                    'Attendance Time' => Egw::link('/egroupware/attendance/graph/timesheet/'),
+                    'Holidays'        => Egw::link('/egroupware/attendance/graph/holidays/'),
+                    'Synchronisation' => Egw::link('/index.php', 'menuaction=attendance.attendance_ui.sync&appname=attendance&use_private=1'),
+
+                ];
+
+                $menu_title = 'Personal Büro';
+                display_sidebox($appname, $menu_title, $file);
+            }
+
             // only users with permission for admin app can see sidebox
             if ($GLOBALS['egw_info']['user']['apps']['admin']) {
-
-                $isManager = Core::isManager($GLOBALS['egw_info']['user']['account_id']);
-                if ($isManager) {
-                    $file = [
-                        'Arbeitsverträge' => Egw::link('/egroupware/attendance/graph/manage/'),
-                        'Attendance Time' => Egw::link('/egroupware/attendance/graph/timesheet/'),
-                        'Holidays'        => Egw::link('/egroupware/attendance/graph/holidays/'),
-                        'Synchronisation' => Egw::link('/index.php', 'menuaction=attendance.attendance_ui.sync&appname=attendance&use_private=1'),
-
-                    ];
-
-                    $menu_title = 'Personal Büro';
-                    display_sidebox($appname, $menu_title, $file);
-                }
-
                 $file = [
                     'Settings' => Egw::link('/egroupware/attendance/graph/settings/'),
                 ];
