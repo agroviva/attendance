@@ -9,12 +9,12 @@
  * @copyright (c) Agroviva GmbH
  */
 
-include_once __DIR__.'/../api/app.php';
+# include_once __DIR__.'/../api/app.php';
 
 use EGroupware\Api;
 use EGroupware\Api\Egw;
 use EGroupware\Api\Link;
-use Attendance\Core;
+# use Attendance\Core;
 
 class attendance_hooks
 {
@@ -29,7 +29,6 @@ class attendance_hooks
 		unset($hook_data);	// not used, but required by function signature
 
 		$appname = 'attendance';
-		$config = Api\Config::read($appname);
 		$menu_title = lang($GLOBALS['egw_info']['apps'][$appname]['title']);
 
         $file = [
@@ -37,22 +36,21 @@ class attendance_hooks
         ];
         display_sidebox($appname, $menu_title, $file);
 
-        $isManager = Core::isManager($GLOBALS['egw_info']['user']['account_id']);
-        if ($isManager) {
-            $file = [
-                'Arbeitsverträge' => Egw::link('/egroupware/attendance/graph/manage/'),
-                'Attendance Time' => Egw::link('/egroupware/attendance/graph/timesheet/'),
-                'Holidays'        => Egw::link('/egroupware/attendance/graph/holidays/'),
-                'Synchronisation' => Egw::link('/index.php', 'menuaction=attendance.attendance_ui.sync&appname=attendance&use_private=1'),
-
-            ];
-
-            $menu_title = 'Personal Büro';
-            display_sidebox($appname, $menu_title, $file);
-        }
-
 		if ($GLOBALS['egw_info']['user']['apps']['admin'])
 		{
+            $isManager = true; #Core::isManager($GLOBALS['egw_info']['user']['account_id']);
+            if ($isManager) {
+                $file = [
+                    'Arbeitsverträge' => Egw::link('/egroupware/attendance/graph/manage/'),
+                    'Attendance Time' => Egw::link('/egroupware/attendance/graph/timesheet/'),
+                    'Holidays'        => Egw::link('/egroupware/attendance/graph/holidays/'),
+                    'Synchronisation' => Egw::link('/index.php', 'menuaction=attendance.attendance_ui.sync&appname=attendance&use_private=1'),
+
+                ];
+
+                $menu_title = 'Personal Büro';
+                display_sidebox($appname, $menu_title, $file);
+            }
             # only users with permission for admin app can see sidebox
 		}
 	}
