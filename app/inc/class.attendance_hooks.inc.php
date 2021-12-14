@@ -11,51 +11,65 @@
 
 include_once __DIR__.'/../api/app.php';
 
+use EGroupware\Api;
 use EGroupware\Api\Egw;
 use EGroupware\Api\Link;
 use Attendance\Core;
 
 class attendance_hooks
 {
-    // To register all hooks for the app. on the proper location
-    public static function all_hooks($args)
-    {
-        $appname = 'attendance';
-        $title = lang($GLOBALS['egw_info']['apps'][$appname]['title']);
-        $location = is_array($args) ? $args['location'] : $args;
 
-        if ($location == 'sidebox_menu') {
+    /**
+	 * Hook for sidebox menu
+	 *
+	 * @param array|string $hook_data
+	 */
+	public static function sidebox_menu($hook_data)
+	{
+		unset($hook_data);	// not used, but required by function signature
+
+		$appname = 'attendance';
+		$config = Api\Config::read($appname);
+		$menu_title = lang($GLOBALS['egw_info']['apps'][$appname]['title']);
+
+        $file = [
+            'Work Tracker' => Egw::link('/egroupware/attendance/graph/tracker/'),
+        ];
+        display_sidebox($appname, $title.'', $file);
+
+        $isManager = Core::isManager($GLOBALS['egw_info']['user']['account_id']);
+        if ($isManager) {
             $file = [
-                'Work Tracker' => Egw::link('/egroupware/attendance/graph/tracker/'),
+                'Arbeitsverträge' => Egw::link('/egroupware/attendance/graph/manage/'),
+                'Attendance Time' => Egw::link('/egroupware/attendance/graph/timesheet/'),
+                'Holidays'        => Egw::link('/egroupware/attendance/graph/holidays/'),
+                'Synchronisation' => Egw::link('/index.php', 'menuaction=attendance.attendance_ui.sync&appname=attendance&use_private=1'),
+
             ];
-            display_sidebox($appname, $title.'', $file);
 
-            $isManager = Core::isManager($GLOBALS['egw_info']['user']['account_id']);
-            if ($isManager) {
-                $file = [
-                    // 'Work Contracts'               => Egw::link('/index.php', 'menuaction=attendance.attendance_ui.manage&appname=attendance&use_private=1'),
-                    'Arbeitsverträge' => Egw::link('/egroupware/attendance/graph/manage/'),
-                    //'Work Contracts 1' => Egw::link('/index.php','menuaction=attendance.attendance_ui.management&appname=attendance&use_private=1'),
-                    //'Work scheduling' => Egw::link('/index.php','menuaction=attendance.attendance_ui.work_schedule&appname=attendance&use_private=1'),
-                    'Attendance Time' => Egw::link('/egroupware/attendance/graph/timesheet/'),
-                    // 'Log'             => Egw::link('/index.php', 'menuaction=attendance.attendance_ui.logs&appname=attendance&use_private=1'),
-                    'Holidays'        => Egw::link('/egroupware/attendance/graph/holidays/'),
-                    'Synchronisation' => Egw::link('/index.php', 'menuaction=attendance.attendance_ui.sync&appname=attendance&use_private=1'),
-
-                ];
-
-                $menu_title = 'Personal Büro';
-                display_sidebox($appname, $menu_title, $file);
-            }
-
-            // only users with permission for admin app can see sidebox
-            if ($GLOBALS['egw_info']['user']['apps']['admin']) {
-                $file = [
-                    'Settings' => Egw::link('/egroupware/attendance/graph/settings/'),
-                ];
-
-                display_sidebox($appname, 'Administrator', $file);
-            }
+            $menu_title = 'Personal Büro';
+            display_sidebox($appname, $menu_title, $file);
         }
+
+		if ($GLOBALS['egw_info']['user']['apps']['admin'])
+		{
+            # only users with permission for admin app can see sidebox
+		}
+	}
+
+    /**
+	 * Hook for admin menu
+	 *
+	 * @param array|string $hook_data
+	 */
+    public static function admin($hook_data){
+
+		unset($hook_data);	// not used, but required by function signature
+
+        $file = [
+            'Settings' => Egw::link('/egroupware/attendance/graph/settings/'),
+        ];
+
+        display_sidebox($appname, 'Administrator', $file);
     }
 }
