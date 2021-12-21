@@ -4,6 +4,9 @@ use Attendance\Categories;
 use AgroEgw\DB;
 use Carbon\Carbon;
 
+$data = array();
+parse_str($_REQUEST["data"], $data);
+
 $categories = Categories::GetCategories();
 $work = $categories["work"];
 $duration = 1 * 60;
@@ -18,5 +21,6 @@ VALUES ('$start', '$duration', '$duration', '$title', '$work', '$user', '$user',
 
 echo json_encode(array(
     $Query, 
-    $_REQUEST
+    $_REQUEST,
+    $data
 ));
