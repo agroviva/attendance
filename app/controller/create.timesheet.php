@@ -6,12 +6,17 @@ use Carbon\Carbon;
 
 $categories = Categories::GetCategories();
 $work = $categories["work"];
-$title = "";
+$duration = 1 * 60;
+$title = "Arbeitszeit";
 $timeNow = time();
+
 
 $Query = "INSERT INTO egw_timesheet(ts_start, ts_duration, ts_quantity, ts_title, cat_id, ts_owner, ts_created, ts_modified, ts_modifier) 
 VALUES ('$start', '$duration', '$duration', '$title', '$work', '$user', '$user', '$timeNow', '$user')";
 
 #(new DB($Query));
 
-echo $Query;
+echo json_encode(array(
+    $Query, 
+    $_REQUEST
+));
