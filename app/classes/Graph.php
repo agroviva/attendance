@@ -33,6 +33,8 @@ class Graph
             self::Render('timesheet', true);
         } elseif (self::hasRoute('/attendance/graph/settings/')) {
             self::Render('settings');
+        } elseif (self::hasRoute('/attendance/graph/create/')) {
+            self::Render('create');
         } else {
             self::Render('tracker');
         }
