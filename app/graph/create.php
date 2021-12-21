@@ -8,12 +8,12 @@ Graph::Render('header');
 
 <div>
 	<form class="createTimesheet">
-        <label for="titel">Titel</label><br>
-        <input type="text" id="titel" name="titel" value="" placeholder="Arbeitszeit"><br>
+        <label for="title">Titel</label><br>
+        <input type="text" id="title" name="title" value="" placeholder="Arbeitszeit"><br>
         <label for="datetime">Datum & Startzeit</label><br>
         <input type="datetime-local" id="datetime" name="datetime"><br>
-        <label for="dauer">Dauer</label><br>
-        <input type="number" step="0.01" id="dauer" name="dauer"><br>
+        <label for="duration">Dauer</label><br>
+        <input type="number" step="0.01" id="duration" name="duration"><br>
         <label for="user">Benutzer</label><br>
         <select name="user">
         <?php
