@@ -44,7 +44,7 @@ Graph::Render('header');
                 	data: $("form.createTimesheet").serialize(),
                 },
                 success: function(data) {
-
+                    window.location.reload();
                 },
                 error: function() {
                     alert('error handling here');
