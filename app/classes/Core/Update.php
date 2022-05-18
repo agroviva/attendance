@@ -13,7 +13,7 @@ class Update
 
     private static $version;
 
-    private static $update = [1, 2, 3, 4, 5, 6, 7, 8];
+    private static $update = [1, 2, 3, 4, 5, 6, 7];
 
     public static function Start()
     {

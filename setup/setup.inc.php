@@ -1,7 +1,7 @@
 <?php
         $setup_info['attendance']['name'] = 'attendance';
         $setup_info['attendance']['title'] = 'attendance';
-        $setup_info['attendance']['version'] = '16.1.013';
+        $setup_info['attendance']['version'] = '21.1.001';
         $setup_info['attendance']['app_order'] = 10;
         $setup_info['attendance']['tables'] = ['egw_attendance', 'egw_attendance_meta'];
         $setup_info['attendance']['enable'] = 1;
