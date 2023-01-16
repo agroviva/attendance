@@ -41,9 +41,7 @@ class attendance_hooks
                     'Arbeitsverträge' => Egw::link('/egroupware/attendance/graph/manage/'),
                     #'Erstellen' => Egw::link('/egroupware/attendance/graph/create/'),
                     'Attendance Time' => Egw::link('/egroupware/attendance/graph/timesheet/'),
-                    'Holidays'        => Egw::link('/egroupware/attendance/graph/holidays/'),
-                    #'Synchronisation' => Egw::link('/index.php', 'menuaction=attendance.attendance_ui.sync&appname=attendance&use_private=1'),
-
+                    'Holidays'        => Egw::link('/egroupware/attendance/graph/holidays/')
                 ];
 
                 $menu_title = 'Personal Büro';
@@ -54,6 +52,7 @@ class attendance_hooks
             if ($GLOBALS['egw_info']['user']['apps']['admin']) {
                 $file = [
                     'Settings' => Egw::link('/egroupware/attendance/graph/settings/'),
+                    'Sync' => Egw::link('/index.php', 'menuaction=attendance.attendance_ui.sync&appname=attendance&use_private=1'),
                 ];
 
                 display_sidebox($appname, 'Administrator', $file);
