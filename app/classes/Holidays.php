@@ -39,6 +39,7 @@ class Holidays
 
             return new static();
         }
+        Dump(self::$tempHolidays);
     }
 
     public static function District($district)
