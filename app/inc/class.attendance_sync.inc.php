@@ -35,43 +35,40 @@ class attendance_sync
 
         $this->db = $GLOBALS['egw']->db;
         $this->category = Categories::Get();
+
+        // Here are the Categories defined
+        $this->parent_category = $this->category['parent'];
+        $this->vacation_cat = $this->category['vacation'];
+        $this->sickness_cat = $this->category['sickness'];
+        $this->school_cat = $this->category['school'];
+        $this->holiday_cat = $this->category['holiday'];
+
+        $this->sql_category = [
+            [
+                'id'   => $this->sickness_cat['id'],
+                'name' => $this->sickness_cat['name'],
+            ],
+            [
+                'id'   => $this->school_cat['id'],
+                'name' => $this->school_cat['name'],
+            ],
+            [
+                'id'   => $this->vacation_cat['id'],
+                'name' => $this->vacation_cat['name'],
+            ],
+        ];
     }
 
     public function init($now_time)
     {
         $unix_time = strtotime($now_time);
         $CarbonDate = Carbon::parse($now_time);
-
-        $yearShift = $CarbonDate->year - intval(date("Y"));
-
-        $this->holiday = Holidays::Render('de', $yearShift)->District('Baden-Württemberg');
-
-        // Here are the Categories defined
-        $parent_category = $this->category['parent'];
-        $vacation_cat = $this->category['vacation'];
-        $sickness_cat = $this->category['sickness'];
-        $school_cat = $this->category['school'];
-        $holiday_cat = $this->category['holiday'];
+        $this->holiday = Holidays::Render('de', intval($CarbonDate->year))->District('Baden-Württemberg');
 
         if (defined('SYNC') && SYNC) {
             //Here it will check every user that is available by Work Contract
             echo "<div style='text-align: center;font-size: larger;font-weight: bold;font-family: monospace;color: navy;background-color: #6e905029;width: 100%;height: auto;'>";
         }
-
-        $sql_category = [
-            [
-                'id'   => $sickness_cat['id'],
-                'name' => $sickness_cat['name'],
-            ],
-            [
-                'id'   => $school_cat['id'],
-                'name' => $school_cat['name'],
-            ],
-            [
-                'id'   => $vacation_cat['id'],
-                'name' => $vacation_cat['name'],
-            ],
-        ];
 
         $sql = "
             SELECT * FROM egw_attendance a 
@@ -103,7 +100,7 @@ class attendance_sync
             }
 
             if (!$HolidayName = Holidays::isHoliday(date('Y-m-d', $unix_time))) {
-                foreach ($sql_category as $category => $value) {
+                foreach ($this->sql_category as $category => $value) {
                     $sql_query = "
                     SELECT * FROM egw_cal a 
                     LEFT OUTER JOIN egw_cal_user b ON a.cal_id = b.cal_id 
@@ -123,9 +120,9 @@ class attendance_sync
                             $ts_owner = $result['cal_user_id'];
                             $cat_id = $value['id'];
                             $proof = $this->so->proof_timesheet($now_time, $ts_owner, [
-                                $sql_category[0]['id'],
-                                $sql_category[1]['id'],
-                                $sql_category[2]['id'],
+                                $this->sql_category[0]['id'],
+                                $this->sql_category[1]['id'],
+                                $this->sql_category[2]['id'],
                             ]);
                             $cat_name = $value['name'];
                             $username = $user['n_fileas'];
@@ -140,10 +137,10 @@ class attendance_sync
                 }
             } else {
                 if (defined('SYNC') && SYNC) {
-                    echo "User $user[n_fileas] is selected with category $holiday_cat[name]</br>";
+                    echo "User $user[n_fileas] is selected with category ".$this->holiday_cat['name']."</br>";
                 }
                 $ts_owner = $user['user'];
-                $cat_id = $holiday_cat['id'];
+                $cat_id = $this->holiday_cat['id'];
                 $proof = $this->so->proof_timesheet($now_time, $ts_owner, $cat_id);
                 if ($proof > 0) {
                     if (defined('SYNC') && SYNC) {
@@ -177,7 +174,7 @@ class attendance_sync
             $this->init($to);
         } else {
             $period = CarbonPeriod::create($from, $to);
-
+            
             foreach ($period as $carbon) {
                 $date = $carbon->format('Y-m-d');
                 $this->init($date);

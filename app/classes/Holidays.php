@@ -9,14 +9,14 @@ class Holidays
 
     private static $tempHolidays = [];
 
-    public static function Render($country_code, $yearShift = 0)
+    public static function Render($country_code, $year)
     {
         $filename = $country_code.'_Holidays.json';
         $path = APPDIR.'/holidays/'.$filename;
+        self::$holidays = [];
 
         if (file_exists($path)) {
             $data = json_decode(file_get_contents($path), true);
-            $year = intval(date('Y')) + $yearShift;
 
             $holidays = $data['holidays'];
             self::$districts = $data['districts'];
@@ -36,10 +36,8 @@ class Holidays
                 ];
             }
             self::$tempHolidays = self::$holidays;
-
             return new static();
         }
-        Dump(self::$tempHolidays);
     }
 
     public static function District($district)
