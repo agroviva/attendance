@@ -3,21 +3,21 @@
 use Attendance\Contract;
 
 if (isset($content)) {
-    if (isset($content['add'])) { // Add Button (Contracts)
-        $this->add();
+	if (isset($content['add'])) { // Add Button (Contracts)
+		$this->add();
 
-        return;
-    } elseif (isset($content['con_table']['delete'])) { // Delete Button
-        list($id) = each($content['con_table']['delete']);
-        Contract::Delete($id);
-    } elseif (isset($content['con_table']['edit'])) { // Edit Button
-        list($id) = each($content['con_table']['edit']);
-        $this->edit($content = null, $id);
+		return;
+	} elseif (isset($content['con_table']['delete'])) { // Delete Button
+		list($id) = each($content['con_table']['delete']);
+		Contract::Delete($id);
+	} elseif (isset($content['con_table']['edit'])) { // Edit Button
+		list($id) = each($content['con_table']['edit']);
+		$this->edit($content = null, $id);
 
-        return;
-    } elseif (isset($content['expired'])) {
-        $this->so->toogle_disabled_contracts();
-    }
+		return;
+	} elseif (isset($content['expired'])) {
+		$this->so->toogle_disabled_contracts();
+	}
 }
 
 $content['con_table'] = $this->Contracts->Load();

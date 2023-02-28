@@ -4,77 +4,78 @@ namespace Attendance;
 
 class Holidays
 {
-    private static $holidays = [];
-    private static $districts = [];
+	private static $holidays = [];
+	private static $districts = [];
 
-    private static $tempHolidays = [];
+	private static $tempHolidays = [];
 
-    public static function Render($country_code, $year)
-    {
-        $filename = $country_code.'_Holidays.json';
-        $path = APPDIR.'/holidays/'.$filename;
-        self::$holidays = [];
+	public static function Render($country_code, $year)
+	{
+		$filename = $country_code.'_Holidays.json';
+		$path = APPDIR.'/holidays/'.$filename;
+		self::$holidays = [];
 
-        if (file_exists($path)) {
-            $data = json_decode(file_get_contents($path), true);
+		if (file_exists($path)) {
+			$data = json_decode(file_get_contents($path), true);
 
-            $holidays = $data['holidays'];
-            self::$districts = $data['districts'];
+			$holidays = $data['holidays'];
+			self::$districts = $data['districts'];
 
-            foreach ($holidays as $holiday) {
-                $name = $holiday['name'];
-                if (!empty($holiday['const'])) {
-                    $hDate = $holiday['const'];
-                } else {
-                    $hDate = $holiday[$year];
-                }
-                $day = $hDate['d'];
-                $month = $hDate['m'];
-                self::$holidays[] = [
-                    'name' => $name,
-                    'date' => "$year-$month-$day",
-                ];
-            }
-            self::$tempHolidays = self::$holidays;
-            return new static();
-        }
-    }
+			foreach ($holidays as $holiday) {
+				$name = $holiday['name'];
+				if (!empty($holiday['const'])) {
+					$hDate = $holiday['const'];
+				} else {
+					$hDate = $holiday[$year];
+				}
+				$day = $hDate['d'];
+				$month = $hDate['m'];
+				self::$holidays[] = [
+					'name' => $name,
+					'date' => "$year-$month-$day",
+				];
+			}
+			self::$tempHolidays = self::$holidays;
 
-    public static function District($district)
-    {
-        if (!empty(self::$holidays)) {
-            $holidays = [];
-            foreach (self::$holidays as $key => $holiday) {
-                if (in_array($key, self::$districts[$district])) {
-                    $holidays[] = $holiday;
-                }
-            }
-            self::$tempHolidays = $holidays;
+			return new static();
+		}
+	}
 
-            return $holidays;
-        }
+	public static function District($district)
+	{
+		if (!empty(self::$holidays)) {
+			$holidays = [];
+			foreach (self::$holidays as $key => $holiday) {
+				if (in_array($key, self::$districts[$district])) {
+					$holidays[] = $holiday;
+				}
+			}
+			self::$tempHolidays = $holidays;
 
-        return [];
-    }
+			return $holidays;
+		}
 
-    public static function All()
-    {
-        if (!empty(self::$holidays)) {
-            return self::$holidays;
-        }
+		return [];
+	}
 
-        return [];
-    }
+	public static function All()
+	{
+		if (!empty(self::$holidays)) {
+			return self::$holidays;
+		}
 
-    public static function isHoliday($date = false)
-    {
-        $date = $date ?: date('Y-m-d');
-        foreach (self::$tempHolidays as $holiday) {
-            if ($date == $holiday['date']) {
-                return $holiday['name'];
-            }
-        }
+		return [];
+	}
 
-        return false;
-    }
+	public static function isHoliday($date = false)
+	{
+		$date = $date ?: date('Y-m-d');
+		foreach (self::$tempHolidays as $holiday) {
+			if ($date == $holiday['date']) {
+				return $holiday['name'];
+			}
+		}
+
+		return false;
+	}
 }

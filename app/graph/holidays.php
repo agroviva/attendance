@@ -15,12 +15,12 @@ Graph::Render('header');
 			<th>Datum</th>
 		</thead>
 		<tbody>
-			<?php foreach ($holidays as $key => $holiday): ?>
+			<?php foreach ($holidays as $key => $holiday) { ?>
 				<tr>
 					<td><?php echo $holiday['name']?></td>
 					<td><?php echo $holiday['date']?></td>
 				</tr>
-			<?php endforeach ?>
+			<?php } ?>
 		</tbody>
 	</table>
 </div>

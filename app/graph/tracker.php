@@ -27,14 +27,14 @@ $so = new attendance_so();
 </head>
 <body>
 <?php
-    $GLOBALS['egw_info']['flags']['app_header'] = lang('attendance - Tracker');
-    $user = $GLOBALS['egw_info']['user']['account_id'];
+	$GLOBALS['egw_info']['flags']['app_header'] = lang('attendance - Tracker');
+	$user = $GLOBALS['egw_info']['user']['account_id'];
 
-    $check = Core::Self($user);
+	$check = Core::Self($user);
 
-    $rows = Tracker::ValidContracts(); // take the available users
+	$rows = Tracker::ValidContracts(); // take the available users
 
-    ?>
+	?>
 <div id='dlgbox'>
     <div id='dlg-header' class="roboto_regular"><?php echo lang('You dont have premission on this page.'); ?></div>
     <div id='dlg-body' class="roboto_regular"><?php echo lang('Only the user itself can open this page'); ?></div>
@@ -151,11 +151,11 @@ $so = new attendance_so();
 <div id="content">
 	<div id="user_wrapper" class="tracker">
 
-		<?php 
-            if ($rows) {
-                foreach ($rows as $user) {
-                    // $image_src = (!empty($user['contact_jpegphoto']) ? "data:image/jpeg;base64,".base64_encode($user['contact_jpegphoto'])."" : "/egroupware/attendance/templates/default/images/photo.png");
-                    $image_src = '/egroupware/attendance/image.php?id='.$user['account_id'].'&etag=8'; ?>
+		<?php
+			if ($rows) {
+				foreach ($rows as $user) {
+					// $image_src = (!empty($user['contact_jpegphoto']) ? "data:image/jpeg;base64,".base64_encode($user['contact_jpegphoto'])."" : "/egroupware/attendance/templates/default/images/photo.png");
+					$image_src = '/egroupware/attendance/image.php?id='.$user['account_id'].'&etag=8'; ?>
 
 				<div class="user_box" id="user_<?php echo $user['account_id']; ?>" onclick="open_user(<?php echo $user['account_id']; ?>);" >
 					<div id="user_<?php echo $user['account_id']; ?>" class="user">
@@ -168,15 +168,15 @@ $so = new attendance_so();
 				</div>
 
 		<?php
-                }
-            }
-        ?>
+				}
+			}
+		?>
 	</div>
 </div>
     <?php
 
-    if ($_GET) {
-        $nfc_id = $_GET['id']; ?>
+	if ($_GET) {
+		$nfc_id = $_GET['id']; ?>
 			<script>
 				
 				$(document).ready(function() {
@@ -185,7 +185,7 @@ $so = new attendance_so();
 
 			</script>
 		<?php
-    }
+	}
 ?>
 <script type="text/javascript">
 	$('.inputpassword').numpad();

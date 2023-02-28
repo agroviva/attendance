@@ -1,7 +1,6 @@
 <?php
-use Attendance\Graph;
 use AgroEgw\DB;
-use Carbon\Carbon;
+use Attendance\Graph;
 
 Graph::Render('header');
 ?>
@@ -17,11 +16,11 @@ Graph::Render('header');
         <label for="user">Benutzer</label><br>
         <select name="user">
         <?php
-            $sql = "SELECT * FROM egw_addressbook a RIGHT OUTER JOIN egw_attendance b ON a.account_id = b.user WHERE (a.account_id IS NOT NULL AND b.user IS NOT NULL) AND (b.end is NULL OR b.end >= CURDATE()) ORDER BY n_family;";
-            foreach (DB::GetAll($sql) as $row) {
-                echo "<option value='".$row['account_id']."'>".$row['n_family'].', '.$row['n_given'].'</option>';
-            }
-        ?>
+			$sql = 'SELECT * FROM egw_addressbook a RIGHT OUTER JOIN egw_attendance b ON a.account_id = b.user WHERE (a.account_id IS NOT NULL AND b.user IS NOT NULL) AND (b.end is NULL OR b.end >= CURDATE()) ORDER BY n_family;';
+			foreach (DB::GetAll($sql) as $row) {
+				echo "<option value='".$row['account_id']."'>".$row['n_family'].', '.$row['n_given'].'</option>';
+			}
+		?>
         </select>
         <br>
         <input type="submit" value="Speichern">

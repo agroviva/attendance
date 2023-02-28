@@ -17,23 +17,23 @@ $args = $_REQUEST;
 $contract_id = $args['contract_id'];
 
 if (empty($contract_id)) {
-    die();
+	exit();
 }
 
 $weekdays = [
-    'MO',
-    'DI',
-    'MI',
-    'DO',
-    'FR',
-    'SA',
-    'SO',
+	'MO',
+	'DI',
+	'MI',
+	'DO',
+	'FR',
+	'SA',
+	'SO',
 ];
 
 $spreadsheet = new Spreadsheet();
 $sheet = $spreadsheet->getActiveSheet();
 foreach (range('A', 'G') as $columnID) {
-    $sheet->getColumnDimension($columnID)->setAutoSize(true);
+	$sheet->getColumnDimension($columnID)->setAutoSize(true);
 }
 
 $contract = Contract::Get($contract_id);
@@ -56,47 +56,47 @@ $sheet->setCellValue('F2', 'Total');
 
 $row = 3;
 foreach (TimeAccount::oldAlgo($contract_id)['days'] as $date => $diff) {
-    $diffs = $diff['is'] - $diff['should'];
-    $total += $diffs;
-    $diff_color = $diffs < 0 ? 'FF0000' : '00FF00';
-    $total_color = $total < 0 ? 'FF0000' : '00FF00';
-    if ($diff['is'] == 0 && $diff['should'] == 0) {
-        continue;
-    }
-    $carbon = Carbon::parse($date);
-    $dayOfWeek = $carbon->dayOfWeekIso - 1;
-    $date = $carbon->format('d.m.Y');
+	$diffs = $diff['is'] - $diff['should'];
+	$total += $diffs;
+	$diff_color = $diffs < 0 ? 'FF0000' : '00FF00';
+	$total_color = $total < 0 ? 'FF0000' : '00FF00';
+	if ($diff['is'] == 0 && $diff['should'] == 0) {
+		continue;
+	}
+	$carbon = Carbon::parse($date);
+	$dayOfWeek = $carbon->dayOfWeekIso - 1;
+	$date = $carbon->format('d.m.Y');
 
-    if ($lastMonth && $lastMonth != $carbon->month) {
-        $sheet->setCellValue("A$row", "Zeitkonto für $lastMonthName: $lastTotal");
-        $sheet->getStyle("A$row")->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-        $sheet->getStyle("A$row")->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
-        $sheet->getStyle("A$row:A$row")->getFont()->setBold(true);
-        $sheet->mergeCells("A$row:F$row");
-        $row++;
-    }
+	if ($lastMonth && $lastMonth != $carbon->month) {
+		$sheet->setCellValue("A$row", "Zeitkonto für $lastMonthName: $lastTotal");
+		$sheet->getStyle("A$row")->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+		$sheet->getStyle("A$row")->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
+		$sheet->getStyle("A$row:A$row")->getFont()->setBold(true);
+		$sheet->mergeCells("A$row:F$row");
+		$row++;
+	}
 
-    $lastMonth = $carbon->month;
-    $lastMonthName = $carbon->englishMonth;
-    $lastTotal = round($total, 2);
+	$lastMonth = $carbon->month;
+	$lastMonthName = $carbon->englishMonth;
+	$lastTotal = round($total, 2);
 
-    $sheet->setCellValue("A$row", ($weekdays[$dayOfWeek].' '.$date));
+	$sheet->setCellValue("A$row", ($weekdays[$dayOfWeek].' '.$date));
 
-    $sheet->setCellValue("B$row", str_replace('<br>', "\n", trim($diff['title'], '<br>')));
-    $spreadsheet->getActiveSheet()->getStyle("B$row")->getAlignment()->setWrapText(true);
+	$sheet->setCellValue("B$row", str_replace('<br>', "\n", trim($diff['title'], '<br>')));
+	$spreadsheet->getActiveSheet()->getStyle("B$row")->getAlignment()->setWrapText(true);
 
-    $sheet->setCellValue("C$row", $diff['should']);
-    $sheet->setCellValue("D$row", round($diff['is'], 2));
-    $sheet->setCellValue("E$row", round($diffs, 2));
-    $sheet->setCellValue("F$row", round($total, 2));
+	$sheet->setCellValue("C$row", $diff['should']);
+	$sheet->setCellValue("D$row", round($diff['is'], 2));
+	$sheet->setCellValue("E$row", round($diffs, 2));
+	$sheet->setCellValue("F$row", round($total, 2));
 
-    $sheet->getStyle("E$row:E$row")->getFill()->setFillType(Fill::FILL_SOLID);
-    $sheet->getStyle("E$row:E$row")->getFill()->getStartColor()->setARGB($diff_color);
+	$sheet->getStyle("E$row:E$row")->getFill()->setFillType(Fill::FILL_SOLID);
+	$sheet->getStyle("E$row:E$row")->getFill()->getStartColor()->setARGB($diff_color);
 
-    $sheet->getStyle("F$row:F$row")->getFill()->setFillType(Fill::FILL_SOLID);
-    $sheet->getStyle("F$row:F$row")->getFill()->getStartColor()->setARGB($total_color);
+	$sheet->getStyle("F$row:F$row")->getFill()->setFillType(Fill::FILL_SOLID);
+	$sheet->getStyle("F$row:F$row")->getFill()->getStartColor()->setARGB($total_color);
 
-    $row++;
+	$row++;
 }
 
 $sheet->setCellValue("A$row", "Zeitkonto für $lastMonthName: $lastTotal");
@@ -119,4 +119,4 @@ header('Content-Transfer-Encoding: binary');
 header('Cache-Control: must-revalidate');
 header('Pragma: public');
 readfile($file);
-die();
+exit();
