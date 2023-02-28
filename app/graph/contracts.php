@@ -11,8 +11,8 @@ $contracts = $contracts->Load();
  * This could be unnessesary work done, code may change for better
  */
 foreach ($contracts as $key => $contract) {
-    $user = User::Read($contract['user']);
-    $contracts[$key]['fullname'] = $user['account_firstname'].' '.$user['account_lastname'];
+	$user = User::Read($contract['user']);
+	$contracts[$key]['fullname'] = $user['account_firstname'].' '.$user['account_lastname'];
 }
 unset($contract); // unset this variable because it will be used later below
 
@@ -20,8 +20,8 @@ unset($contract); // unset this variable because it will be used later below
  * Sort by the alphabetic order
  */
 usort($contracts, function ($x, $y) {
-    // return strcasecmp($x['fullname'], $y['fullname']);
-    return $x['sort_order'] - $y['sort_order'];
+	// return strcasecmp($x['fullname'], $y['fullname']);
+	return $x['sort_order'] - $y['sort_order'];
 });
 
 Graph::Render('header');
@@ -189,16 +189,16 @@ Graph::Render('header');
 				</tr>
 			</thead>
 			<tbody id="sortable">
-				<?php foreach ($contracts as $contract): ?>
-					<?php 
-                    $user = User::Read($contract['user']);
-                    $user['account_fullname'] = $user['account_lastname'].', '.$user['account_firstname'];
-                    $account_id = $user['account_id'];
-                    $contact_id = $user['person_id'];
-                    $status = $contract['status'] == 'Active' ? 'online' :
-                    ($contract['status'] == 'expired' ? 'expired hidden' : 'offline');
-                    $TimeAccountState = ($contract['time_account'] < 0 ? 'danger' : 'success');
-                    ?>
+				<?php foreach ($contracts as $contract) { ?>
+					<?php
+					$user = User::Read($contract['user']);
+					$user['account_fullname'] = $user['account_lastname'].', '.$user['account_firstname'];
+					$account_id = $user['account_id'];
+					$contact_id = $user['person_id'];
+					$status = $contract['status'] == 'Active' ? 'online' :
+					($contract['status'] == 'expired' ? 'expired hidden' : 'offline');
+					$TimeAccountState = ($contract['time_account'] < 0 ? 'danger' : 'success');
+					?>
 					<tr id="entry_<?php echo $contract['id']?>" data-account="<?php echo $account_id?>" data-contact="<?php echo $contact_id?>" class="<?php echo $status?>">
 						<td class="username">
 							<div class="worker-photo" style="box-sizing: border-box;background-image: url(/egroupware/attendance/image.php?id=<?php echo $account_id?>&etag=8);"></div>
@@ -215,7 +215,7 @@ Graph::Render('header');
 						<td><button type="button" rel="tooltip" class="btn btn-info btn-simple EditContract" data-toggle="modal">Bearbeiten</button></td>
 						<td><button type="button" rel="tooltip" class="btn btn-danger btn-simple DeleteContract">Löschen</button></td>
 					</tr>
-				<?php endforeach ?>
+				<?php } ?>
 			</tbody>
 		</table>
 	</div>

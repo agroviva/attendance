@@ -1,8 +1,8 @@
 <?php
-use Attendance\Categories;
-use Attendance\Graph;
-use Attendance\Core;
 use AgroEgw\Api\User;
+use Attendance\Categories;
+use Attendance\Core;
+use Attendance\Graph;
 
 Graph::Render('header');
 ?>
@@ -60,20 +60,20 @@ Graph::Render('header');
 </style>
 <section id="permission">
 	<h2>Personal Büro</h2>
-	<?php $managers = Core::getMeta(false, "manager"); ?>
+	<?php $managers = Core::getMeta(false, 'manager'); ?>
 	<form>
 		<div class="form-group bmd-form-group">
 		    <label for="manager" class="bmd-label-static">Benutzer oder Gruppen</label>
 		    <input type="text" class="form-control" id="manager">
 		   	<div class="manager not-selectable">
-		   		<?php foreach ($managers as $manager): ?>
-		   			<?php 
-		   				$userID = $manager['meta_connection_id'];
-		   				$user = User::Read($userID);
-		   				$name = $user["account_fullname"];
-		   			?>
+		   		<?php foreach ($managers as $manager) { ?>
+		   			<?php
+						$userID = $manager['meta_connection_id'];
+						$user = User::Read($userID);
+						$name = $user['account_fullname'];
+					?>
 		   			<div class="user active" onclick="selectManager(this)" data-uid="<?php echo $userID?>"><p><?php echo $name?></p></div>
-		   		<?php endforeach ?>
+		   		<?php } ?>
 		   	</div>
 		  </div>
 	</form>
@@ -82,10 +82,9 @@ Graph::Render('header');
 	<h2>Kategorien</h2>
 	<?php
 
+	$gg = Categories::Get();
 
-    $gg = Categories::Get();
-
-    ?>
+	?>
 </section>
 <script type="text/javascript">
     $('input#manager').keyup(function(e) {

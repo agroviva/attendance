@@ -9,11 +9,11 @@ use EGroupware\Api\Asyncservice;
 require_once __DIR__.'/../../../agroviva/vendor/autoload.php';
 
 if (!defined('APPDIR')) {
-    define('APPDIR', dirname(__DIR__));
+	define('APPDIR', dirname(__DIR__));
 }
 
 if (!defined('TEMPLATE')) {
-    define('TEMPLATE', __DIR__.'/../views');
+	define('TEMPLATE', __DIR__.'/../views');
 }
 
 App::setName('attendance');
@@ -27,14 +27,14 @@ $async = new asyncservice();
 
 $async->delete('attendance_api');
 if (($async->read('attendance')['attendance']['method'] != 'attendance.attendance_sync.synchron')) {
-    $async->delete('attendance');
-    $async->set_timer(['hour' => '*/2'], 'attendance', 'attendance.attendance_sync.synchron', null);
+	$async->delete('attendance');
+	$async->set_timer(['hour' => '*/2'], 'attendance', 'attendance.attendance_sync.synchron', null);
 }
 
 $db = (new DB("SHOW TABLES LIKE 'egw_attendance'"))->Fetch();
 if (empty($db)) {
-    $async->delete('attendance');
-    die();
+	$async->delete('attendance');
+	exit();
 }
 
 Update::Start();

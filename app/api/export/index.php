@@ -9,9 +9,9 @@ $so = new attendance_so();
 $bo = new attendance_bo();
 
 if (isset($_GET)) {
-    $export = new Export($_GET);
+	$export = new Export($_GET);
 } elseif (isset($_POST)) {
-    $export = new Export($_POST);
+	$export = new Export($_POST);
 }
 
 $export->exec();

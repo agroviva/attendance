@@ -12,7 +12,7 @@ $args = $_REQUEST;
 $contract_id = $args['contract_id'];
 
 if (empty($contract_id)) {
-    die();
+	exit();
 }
 
 $contract = Contract::Get($contract_id);
@@ -21,13 +21,13 @@ $user = User::Read($contract['user']);
 $fullname = $user['account_firstname'].' '.$user['account_lastname'];
 
 $weekdays = [
-    'MO',
-    'DI',
-    'MI',
-    'DO',
-    'FR',
-    'SA',
-    'SO',
+	'MO',
+	'DI',
+	'MI',
+	'DO',
+	'FR',
+	'SA',
+	'SO',
 ];
 
 ob_start();
@@ -115,21 +115,21 @@ ob_start();
 		</tr>
 	</thead>
 	<tbody>
-	<?php foreach (TimeAccount::oldAlgo($contract_id)['days'] as $date => $diff): ?>
+	<?php foreach (TimeAccount::oldAlgo($contract_id)['days'] as $date => $diff) { ?>
 		<?php
-        $diffs = $diff['is'] - $diff['should'];
-        $total += $diffs;
-        $diff_color = $diffs < 0 ? 'red' : 'green';
-        $total_color = $total < 0 ? 'red' : 'green';
-        if ($diff['is'] == 0 && $diff['should'] == 0) {
-            continue;
-        }
-        $carbon = Carbon::parse($date);
-        $dayOfWeek = $carbon->dayOfWeekIso - 1;
-        $date = $carbon->format('d.m.Y');
+		$diffs = $diff['is'] - $diff['should'];
+		$total += $diffs;
+		$diff_color = $diffs < 0 ? 'red' : 'green';
+		$total_color = $total < 0 ? 'red' : 'green';
+		if ($diff['is'] == 0 && $diff['should'] == 0) {
+			continue;
+		}
+		$carbon = Carbon::parse($date);
+		$dayOfWeek = $carbon->dayOfWeekIso - 1;
+		$date = $carbon->format('d.m.Y');
 
-        if ($lastMonth && $lastMonth != $carbon->month) {
-            ?>
+		if ($lastMonth && $lastMonth != $carbon->month) {
+			?>
 	        <tr class="month_sum">
 	        	<td class="summe" colspan="3" align="center" ><?php echo $endMonth?></td>
 	        	<td class="number"><?php echo $sollTotal?></td>
@@ -138,21 +138,21 @@ ob_start();
 	        	<td class="number <?php echo $lastTotalColor?>"><?php echo $lastTotal?></td>
 	        </tr>
 	        <?php
-            $sollTotal = $istTotal = $diffTotal = 0;
-        }
+			$sollTotal = $istTotal = $diffTotal = 0;
+		}
 
-        $lastMonth = $carbon->month;
-        $lastMonthName = lang($carbon->englishMonth);
-        $lastTotal = number_format($total, 2);
-        $sollTotal += $diff['should'];
-        $istTotal += $diff['is'];
-        $diffTotal += $diffs;
+		$lastMonth = $carbon->month;
+		$lastMonthName = lang($carbon->englishMonth);
+		$lastTotal = number_format($total, 2);
+		$sollTotal += $diff['should'];
+		$istTotal += $diff['is'];
+		$diffTotal += $diffs;
 
-        $endMonth = "Zeitkonto für $lastMonthName ".$carbon->year;
-        $diffTotalColor = $diffTotal < 0 ? 'red' : 'green';
-        $lastTotalColor = $lastTotal < 0 ? 'red' : 'green';
+		$endMonth = "Zeitkonto für $lastMonthName ".$carbon->year;
+		$diffTotalColor = $diffTotal < 0 ? 'red' : 'green';
+		$lastTotalColor = $lastTotal < 0 ? 'red' : 'green';
 
-        ?>
+		?>
 		<tr>
 			<td class="day"><?php echo $weekdays[$dayOfWeek]?></td>
 			<td class="date"><?php echo $date?></td>
@@ -162,7 +162,7 @@ ob_start();
 			<td class="<?php echo $diff_color?> number"><?php echo number_format($diffs, 2)?></td>
 			<td class="<?php echo $total_color?> number"><?php echo number_format($total, 2)?></td>
 		</tr>
-	<?php endforeach ?>
+	<?php } ?>
         <tr class="month_sum">
         	<td class="summe" colspan="3" align="center" ><?php echo $endMonth?></td>
         	<td class="number"><?php echo $sollTotal?></td>

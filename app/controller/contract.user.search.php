@@ -6,7 +6,7 @@ use Attendance\Contracts;
 $post = $_POST;
 
 if (empty($post)) {
-    die();
+	exit();
 }
 
 $users = User::Search($post['query']);
@@ -28,6 +28,6 @@ $html = '
 ';
 
 echo json_encode([
-    'users' => $users,
-    'html'  => $html,
+	'users' => $users,
+	'html'  => $html,
 ]);
