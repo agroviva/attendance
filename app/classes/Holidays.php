@@ -9,7 +9,7 @@ class Holidays
 
 	private static $tempHolidays = [];
 
-	public static function Render($country_code, $year)
+	public static function Render($country_code, $year = date("Y"))
 	{
 		$filename = $country_code.'_Holidays.json';
 		$path = APPDIR.'/holidays/'.$filename;
