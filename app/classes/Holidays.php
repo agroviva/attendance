@@ -19,30 +19,30 @@ class Holidays
 		$path = APPDIR.'/holidays/'.$filename;
 		self::$holidays = [];
 
-		if (file_exists($path)) {
-			$data = json_decode(file_get_contents($path), true);
 
-			$holidays = $data['holidays'];
-			self::$districts = $data['districts'];
+		$data = json_decode(file_get_contents("https://raw.githubusercontent.com/agroviva/attendance/main/app/holidays/de_Holidays.json"), true);
 
-			foreach ($holidays as $holiday) {
-				$name = $holiday['name'];
-				if (!empty($holiday['const'])) {
-					$hDate = $holiday['const'];
-				} else {
-					$hDate = $holiday[$year];
-				}
-				$day = $hDate['d'];
-				$month = $hDate['m'];
-				self::$holidays[] = [
-					'name' => $name,
-					'date' => "$year-$month-$day",
-				];
+		$holidays = $data['holidays'];
+		self::$districts = $data['districts'];
+
+		foreach ($holidays as $holiday) {
+			$name = $holiday['name'];
+			if (!empty($holiday['const'])) {
+				$hDate = $holiday['const'];
+			} else {
+				$hDate = $holiday[$year];
 			}
-			self::$tempHolidays = self::$holidays;
-
-			return new static();
+			$day = $hDate['d'];
+			$month = $hDate['m'];
+			self::$holidays[] = [
+				'name' => $name,
+				'date' => "$year-$month-$day",
+			];
 		}
+		self::$tempHolidays = self::$holidays;
+
+		return new static();
+
 	}
 
 	public static function District($district)
