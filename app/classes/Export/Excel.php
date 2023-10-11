@@ -14,7 +14,7 @@ use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 class Excel
 {
-	public function __construct($data)
+	public function __construct()
 	{
 		global $so, $bo;
 		ob_get_clean();
