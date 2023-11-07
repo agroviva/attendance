@@ -37,7 +37,7 @@ class attendance_hooks
 			if ($isManager) {
 				$file = [
 					'Arbeitsverträge' => Egw::link('/egroupware/attendance/graph/manage/'),
-					//'Erstellen' => Egw::link('/egroupware/attendance/graph/create/'),
+					'Stundenzettel anlegen' => Egw::link('/egroupware/attendance/graph/create/'),
 					'Attendance Time' => Egw::link('/egroupware/attendance/graph/timesheet/'),
 					'Holidays'        => Egw::link('/egroupware/attendance/graph/holidays/'),
 				];
