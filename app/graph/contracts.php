@@ -6,23 +6,27 @@ use Attendance\Graph;
 $contracts = new Contracts();
 $contracts = $contracts->Load();
 
-/*
- * PLEASE REVIEW
- * This could be unnessesary work done, code may change for better
- */
-foreach ($contracts as $key => $contract) {
-	$user = User::Read($contract['user']);
-	$contracts[$key]['fullname'] = $user['account_firstname'].' '.$user['account_lastname'];
+if (!empty($contracts)) {
+	/*
+	 * PLEASE REVIEW
+	 * This could be unnessesary work done, code may change for better
+	 */
+	foreach ($contracts as $key => $contract) {
+		$user = User::Read($contract['user']);
+		$contracts[$key]['fullname'] = $user['account_firstname'].' '.$user['account_lastname'];
+	}
+	unset($contract); // unset this variable because it will be used later below
+	
+	/*
+	 * Sort by the alphabetic order
+	 */
+	usort($contracts, function ($x, $y) {
+		// return strcasecmp($x['fullname'], $y['fullname']);
+		return $x['sort_order'] - $y['sort_order'];
+	});
 }
-unset($contract); // unset this variable because it will be used later below
 
-/*
- * Sort by the alphabetic order
- */
-usort($contracts, function ($x, $y) {
-	// return strcasecmp($x['fullname'], $y['fullname']);
-	return $x['sort_order'] - $y['sort_order'];
-});
+
 
 Graph::Render('header');
 ?>
