@@ -167,7 +167,7 @@ class attendance_sync
 	{
 		// $this->testdebug();
 		$to = date('Y-m-d');
-		$from = date('Y-m-d', strtotime($to.' - 30 days'));
+		$from = date('Y-m-d', strtotime($to.' - 90 days'));
 
 		if (!$from) {
 			$this->init($to);
