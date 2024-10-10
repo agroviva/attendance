@@ -26,6 +26,14 @@ class attendance_sync
 	private $bo;
 	private $holiday;
 
+	public $category;
+	public $parent_category;
+	public $vacation_cat;
+	public $sickness_cat;
+	public $school_cat;
+	public $holiday_cat;
+	public $sql_category;
+
 	public function __construct()
 	{
 		include_once 'class.attendance_so.inc.php';

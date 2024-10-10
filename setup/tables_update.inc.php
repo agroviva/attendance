@@ -871,3 +871,20 @@ function attendance_upgrade16_1_012()
 
 	return $GLOBALS['setup_info']['attendance']['currentver'] = '16.1.013';
 }
+
+function attendance_upgrade23_1_001()
+{
+	$GLOBALS['egw_setup']->oProc->CreateTable('locations', [
+		'fd' => [
+			'id'            	=> ['type' => 'auto', 'precision' => '11', 'nullable' => false],
+			'location'         	=> ['type' => 'varchar', 'precision' => '255', 'nullable' => false],
+			'users'          	=> ['type' => 'longtext'],
+		],
+		'pk' => ['id'],
+		'fk' => [],
+		'ix' => [],
+		'uc' => [],
+	]);
+
+	return $GLOBALS['setup_info']['attendance']['currentver'] = '23.1.001';
+}

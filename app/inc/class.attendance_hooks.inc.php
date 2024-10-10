@@ -40,6 +40,7 @@ class attendance_hooks
 					'Stundenzettel anlegen' => Egw::link('/egroupware/attendance/graph/create/'),
 					'Attendance Time' => Egw::link('/egroupware/attendance/graph/timesheet/'),
 					'Holidays'        => Egw::link('/egroupware/attendance/graph/holidays/'),
+					'Standorte'        => Egw::link('/egroupware/attendance/graph/locations/'),
 				];
 
 				$menu_title = 'Personal Büro';

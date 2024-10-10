@@ -54,4 +54,15 @@ $phpgw_baseline = [
 		'ix' => [],
 		'uc' => [],
 	],
+	'locations' => [
+		'fd' => [
+			'id'            	=> ['type' => 'auto', 'precision' => '11', 'nullable' => false],
+			'location'         	=> ['type' => 'varchar', 'precision' => '255', 'nullable' => false],
+			'users'          	=> ['type' => 'longtext'],
+		],
+		'pk' => ['id'],
+		'fk' => [],
+		'ix' => [],
+		'uc' => [],
+	]
 ];
