@@ -54,7 +54,7 @@ $phpgw_baseline = [
 		'ix' => [],
 		'uc' => [],
 	],
-	'locations' => [
+	'egw_attendance_locations' => [
 		'fd' => [
 			'id'            	=> ['type' => 'auto', 'precision' => '11', 'nullable' => false],
 			'location'         	=> ['type' => 'varchar', 'precision' => '255', 'nullable' => false],

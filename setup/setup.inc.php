@@ -2,9 +2,9 @@
 
 		$setup_info['attendance']['name'] = 'attendance';
 		$setup_info['attendance']['title'] = 'attendance';
-		$setup_info['attendance']['version'] = '23.1.001';
+		$setup_info['attendance']['version'] = '23.1.1';
 		$setup_info['attendance']['app_order'] = 10;
-		$setup_info['attendance']['tables'] = ['egw_attendance', 'egw_attendance_meta'];
+		$setup_info['attendance']['tables'] = ['egw_attendance', 'egw_attendance_meta', 'egw_attendance_locations'];
 		$setup_info['attendance']['enable'] = 1;
 
 		//The application's hooks rergistered.
