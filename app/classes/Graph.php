@@ -35,6 +35,8 @@ class Graph
 			self::Render('settings');
 		} elseif (self::hasRoute('/attendance/graph/create/')) {
 			self::Render('create');
+		} elseif (self::hasRoute('/attendance/graph/locations/')) {
+			self::Render('locations');
 		} else {
 			self::Render('tracker');
 		}

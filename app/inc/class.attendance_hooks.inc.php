@@ -43,7 +43,7 @@ class attendance_hooks
 					'Standorte'        => Egw::link('/egroupware/attendance/graph/locations/'),
 				];
 
-				$menu_title = 'Personal Büro';
+				$menu_title = lang('Personal Büro');
 				display_sidebox($appname, $menu_title, $file);
 			}
 

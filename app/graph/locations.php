@@ -8,23 +8,39 @@ Graph::Render('header');
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Handle adding locations
     if (isset($_POST['add_location'])) {
-        $location = $_POST['location_name'];
+        $location = trim($_POST['location_name']);
         if (!empty($location)) {
-            // Add location to the database (assume you have a DB class with a simple insert method)
+            // Sanitize input
+            $location = htmlspecialchars($location, ENT_QUOTES, 'UTF-8');
+
             // Add location to the database
-            new DB("INSERT INTO egw_attendance_meta(meta_name, meta_connection_id, meta_data) VALUES('location','$location','[]')");
+            DB::Run("INSERT INTO egw_attendance_locations(location, users) VALUES('$location','[]')");
             echo "<p>Location '$location' added successfully!</p>";
+        } else {
+            echo "<p>Please provide a valid location name.</p>";
         }
     }
 
     // Handle assigning users to locations
     if (isset($_POST['assign_user'])) {
-        $user = $_POST['user_name'];
+        $users = json_encode($_POST['users']);
         $location_id = $_POST['location_id'];
+
         if (!empty($user) && !empty($location_id)) {
-            // Assign user to location in the database
-            DB::insert('user_locations', ['user_name' => $user, 'location_id' => $location_id]);
-            echo "<p>User '$user' assigned to location ID '$location_id'!</p>";
+             // Get existing users and merge new ones
+            $existing_location = DB::Get("SELECT users FROM egw_attendance_locations WHERE id = $location_id");
+            if ($existing_location) {
+                $existing_users = json_decode($existing_location['users'], true);
+                $new_users = array_unique(array_merge($existing_users, $_POST['users']));
+
+                // Update the users array
+                $users_json = json_encode($new_users);
+                DB::Run("UPDATE egw_attendance_locations SET users = '$users_json' WHERE id = $location_id");
+
+                echo "<p>Users assigned successfully to location ID '$location_id'!</p>";
+            }
+        } else {
+            echo "<p>Please provide valid users and a location ID.</p>";
         }
     }
 }
@@ -51,9 +67,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <select id="location_id" name="location_id" required>
             <?php
             // Fetch locations from the database to populate the dropdown
-            $locations = DB::select('locations'); // Assuming this returns an array of location data
+            $locations = DB::GetAll("SELECT * FROM egw_attendance_locations"); // Assuming this returns an array of location data
             foreach ($locations as $location) {
-                echo "<option value='{$location['id']}'>{$location['name']}</option>";
+                echo "<option value='{$location['id']}'>{$location['location']}</option>";
             }
             ?>
         </select>
