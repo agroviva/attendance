@@ -872,6 +872,11 @@ function attendance_upgrade16_1_012()
 	return $GLOBALS['setup_info']['attendance']['currentver'] = '16.1.013';
 }
 
+function attendance_upgrade21_1_001()
+{
+	return $GLOBALS['setup_info']['attendance']['currentver'] = '21.1.001';
+}
+
 function attendance_upgrade23_1_1()
 {
 	$GLOBALS['egw_setup']->oProc->CreateTable('egw_attendance_locations', [
