@@ -18,6 +18,19 @@ class Location
         return $location;
     }
 
+    static function getUsersFromSameLocation(){
+        $locations = DB::GetAll("SELECT * FROM egw_attendance_locations"); // Assuming this returns an array of location data
+        $userID = $GLOBALS['egw_info']['user']['account_id'];
+        foreach ($locations as $key => $location) {
+            $users = json_decode($location['users'], true);
+            if (static::UserInLocation($userID, $location['id'])) {
+                $users = json_decode($location['users'], true);
+                return array("location" => $location['location'], "users" => $users);
+            }
+        }
+        return [];
+    }
+
     static function updateLocation($userID, $locationID){
         // Get existing users and merge new ones
         $location = DB::Get("SELECT users FROM egw_attendance_locations WHERE id = $locationID");

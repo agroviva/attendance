@@ -4,6 +4,7 @@ namespace Attendance;
 
 use AgroEgw\DB;
 use Carbon\Carbon;
+use Attendance\Location;
 
 class Tracker
 {
@@ -87,11 +88,23 @@ class Tracker
 	// take the users that have an available contract
 	public static function ValidContracts()
 	{
-		$accounts = (new DB('
-            SELECT * FROM egw_addressbook a 
-            RIGHT OUTER JOIN egw_attendance b ON a.account_id = b.user 
-            WHERE b.end is NULL OR b.end >= CURDATE() ORDER BY b.sort_order
-        '))->FetchAll();
+		$locationUsers = Location::getUsersFromSameLocation();
+		if (empty($locationUsers)) {
+			$users = implode(',', $locationUsers['users']);
+			$accounts = (new DB('
+				SELECT * FROM egw_addressbook a 
+				RIGHT OUTER JOIN egw_attendance b ON a.account_id = b.user 
+				WHERE b.end is NULL OR b.end >= CURDATE() ORDER BY b.sort_order
+			'))->FetchAll();
+		} else {
+
+			$accounts = (new DB('
+				SELECT * FROM egw_addressbook a 
+				RIGHT OUTER JOIN egw_attendance b ON a.account_id = b.user 
+				WHERE b.end is NULL OR b.end >= CURDATE() ORDER BY b.sort_order
+			'))->FetchAll();
+		}
+		
 
 		foreach ($accounts as $key => $account) {
 			$account['fullname'] = $account['n_family'].', '.$account['n_given'];
