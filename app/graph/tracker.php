@@ -154,7 +154,7 @@ $so = new attendance_so();
 	$locationUsers = Location::getUsersFromSameLocation();
 		if (!empty($locationUsers)) {
 			?>
-			<h2>Standort: <?php echo $locationUsers['location'];?></h2>"
+			<h3 style="text-align: center;">Standort: <?php echo $locationUsers['location'];?></h2>
 			<?php
 		}
 	?>
