@@ -10,6 +10,7 @@ class Contracts
 	private $allContracts;
 	private $activeContracts;
 	private $inactiveContracts;
+	public $onlyActive;
 
 	private $ContractID;
 

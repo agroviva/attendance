@@ -18,7 +18,7 @@ if (!defined('TEMPLATE')) {
 
 App::setName('attendance');
 App::Start();
-require_once '/usr/share/egroupware/header.inc.php';
+require_once __DIR__.'/../../../header.inc.php';
 require_once EGW_INCLUDE_ROOT.'/attendance/setup/setup.inc.php';
 require_once __DIR__.'/functions.php';
 require_once __DIR__.'/../classes/autoload.php';

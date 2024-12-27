@@ -2,6 +2,7 @@
 // Include necessary classes like DB for database operations
 use AgroEgw\DB;
 use Attendance\Graph;
+use Attendance\Location;
 
 Graph::Render('header');
 
@@ -10,11 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['add_location'])) {
         $location = trim($_POST['location_name']);
         if (!empty($location)) {
-            // Sanitize input
-            $location = htmlspecialchars($location, ENT_QUOTES, 'UTF-8');
-
-            // Add location to the database
-            DB::Run("INSERT INTO egw_attendance_locations(location, users) VALUES('$location','[]')");
+            Location::add($location);
             echo "<p>Location '$location' added successfully!</p>";
         } else {
             echo "<p>Please provide a valid location name.</p>";
@@ -66,8 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <label for="location_id">Select Location:</label>
         <select id="location_id" name="location_id" required>
             <?php
-            // Fetch locations from the database to populate the dropdown
-            $locations = DB::GetAll("SELECT * FROM egw_attendance_locations"); // Assuming this returns an array of location data
+            $locations = Location::all();
             foreach ($locations as $location) {
                 echo "<option value='{$location['id']}'>{$location['location']}</option>";
             }
@@ -142,7 +138,52 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 e.preventDefault();
             }
         });
+
+        $('input#manager').keyup(function(e) {
+            if (e.which == 13) {
+                if (this.value == "") {
+                    return "";
+                }
+                $.ajax({
+                    type: "POST",
+                    url: "/egroupware/attendance/",
+                    data: {
+                        route: "search.accounts",
+                        query: this.value
+                    },
+                    success: function(data) {
+                        var html = "";
+                        for (var i = 0; i < data.length; i++) {
+                            if (i == 50) {
+                                break;
+                            }
+                            var user = data[i];
+                            var hasId = false;
+                            $("#permission .manager .user.active").each(function(key, elem) {
+                                if ($(this).attr('data-uid') == user["id"]) {
+                                    hasId = true;
+                                }
+                            });
+                            if (hasId) {
+                                hasId = false;
+                                continue;
+                            }
+                            html += '<div class="user" onclick="selectManager(this)" data-uid="' + user["id"] + '"><p>' + (user["label"]["label"] || user["label"]) + '</p></div>'
+                        }
+                        $("#permission .manager .user").not('.active').remove();
+                        $("#permission .manager").append(html);
+                    },
+                    error: function() {
+                        alert('error handling here');
+                    }
+                });
+                return false;
+            }
+        });
+        
     });
+
+
 </script>
 
 <?php
