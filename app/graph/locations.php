@@ -2,7 +2,10 @@
 // Include necessary classes like DB for database operations
 use AgroEgw\DB;
 use Attendance\Graph;
+use Attendance\Contracts;
 use Attendance\Location;
+
+$contracts = new Contracts();
 
 Graph::Render('header');
 
@@ -55,23 +58,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <!-- HTML for Assign User to Location Form -->
 <div class="form-container">
-    <h2>Assign User to Location</h2>
-    <form method="POST" id="assign-user-form">
-        <label for="user_name">User Name:</label>
-        <input type="text" id="user_name" name="user_name" required>
-        
-        <label for="location_id">Select Location:</label>
-        <select id="location_id" name="location_id" required>
-            <?php
-            $locations = Location::all();
-            foreach ($locations as $location) {
-                echo "<option value='{$location['id']}'>{$location['location']}</option>";
-            }
+    <?php
+        $locations = Location::all();
+        foreach ($locations as $location) {
+            $locationID = $location['id'];
             ?>
-        </select>
-        
-        <button type="submit" name="assign_user">Assign User</button>
-    </form>
+            <div class="form-group bmd-form-group" data-uid="<?php echo $location['id']?>">
+                <label for="location" class="bmd-label-static"><?php echo $location['location']?></label>
+                <input type="text" class="form-control" id="location">
+                <div class="location not-selectable">
+                    <?php foreach ($contracts as $contract) { ?>
+                        <?php
+                            $userID = $contract['user'];
+                            $user = User::Read($userID);
+                            $name = $user['account_fullname'];
+                        ?>
+                        <div class="user active" onclick="selectManager(this)" data-uid="<?php echo $userID?>"><p><?php echo $name?></p></div>
+                    <?php } ?>
+		   	    </div>
+            </div>
+            <?php
+        }
+    ?>
 </div>
 
 <style>
@@ -138,49 +146,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 e.preventDefault();
             }
         });
-
-        $('input#manager').keyup(function(e) {
-            if (e.which == 13) {
-                if (this.value == "") {
-                    return "";
-                }
-                $.ajax({
-                    type: "POST",
-                    url: "/egroupware/attendance/",
-                    data: {
-                        route: "search.accounts",
-                        query: this.value
-                    },
-                    success: function(data) {
-                        var html = "";
-                        for (var i = 0; i < data.length; i++) {
-                            if (i == 50) {
-                                break;
-                            }
-                            var user = data[i];
-                            var hasId = false;
-                            $("#permission .manager .user.active").each(function(key, elem) {
-                                if ($(this).attr('data-uid') == user["id"]) {
-                                    hasId = true;
-                                }
-                            });
-                            if (hasId) {
-                                hasId = false;
-                                continue;
-                            }
-                            html += '<div class="user" onclick="selectManager(this)" data-uid="' + user["id"] + '"><p>' + (user["label"]["label"] || user["label"]) + '</p></div>'
-                        }
-                        $("#permission .manager .user").not('.active').remove();
-                        $("#permission .manager").append(html);
-                    },
-                    error: function() {
-                        alert('error handling here');
-                    }
-                });
-                return false;
-            }
-        });
-        
     });
 
 

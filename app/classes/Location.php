@@ -14,7 +14,7 @@ class Location
     }
 
     static function getUsers($locationID){
-        return false; # return list of users from location
+        return array(); # return list of users from location
     }
 
     static function add($location) {
