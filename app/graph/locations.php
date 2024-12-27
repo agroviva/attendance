@@ -23,29 +23,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             echo "<p>Please provide a valid location name.</p>";
         }
     }
-
-    // Handle assigning users to locations
-    if (isset($_POST['assign_user'])) {
-        $users = json_encode($_POST['users']);
-        $location_id = $_POST['location_id'];
-
-        if (!empty($user) && !empty($location_id)) {
-             // Get existing users and merge new ones
-            $existing_location = DB::Get("SELECT users FROM egw_attendance_locations WHERE id = $location_id");
-            if ($existing_location) {
-                $existing_users = json_decode($existing_location['users'], true);
-                $new_users = array_unique(array_merge($existing_users, $_POST['users']));
-
-                // Update the users array
-                $users_json = json_encode($new_users);
-                DB::Run("UPDATE egw_attendance_locations SET users = '$users_json' WHERE id = $location_id");
-
-                echo "<p>Users assigned successfully to location ID '$location_id'!</p>";
-            }
-        } else {
-            echo "<p>Please provide valid users and a location ID.</p>";
-        }
-    }
 }
 ?>
 <style type="text/css">
@@ -81,7 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 		cursor: pointer;
 	}
 	.locations .user.active {
-		background: #008c96;
+		background: green;
 	}
 	.locations .user p {
 		font-size: 12px;
@@ -108,24 +85,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </div>
 
 <!-- HTML for Assign User to Location Form -->
-<div class="form-container">
+<div>
     <?php
         $locations = Location::all();
         foreach ($locations as $location) {
             $locationID = $location['id'];
             ?>
-            <div class="locations form-group bmd-form-group" data-uid="<?php echo $location['id']?>">
-                <label for="location" class="bmd-label-static"><?php echo $location['location']?></label>
-                <input type="text" class="form-control" id="location">
+            <div class="locations form-group bmd-form-group" data-locationid="<?php echo $locationID?>">
+                <strong><?php echo $location['location']?></strong>
                 <div class="location not-selectable">
                     <?php foreach ($contracts as $contract) { ?>
                         <?php
                             $userID = $contract['user'];
                             $user = User::Read($userID);
                             $name = $user['account_fullname'];
-                        ?>
-                        <div class="user active" onclick="selectManager(this)" data-uid="<?php echo $userID?>"><p><?php echo $name?></p></div>
-                    <?php } ?>
+
+                            if (Location::UserInLocation($userID, $locationID)) {
+                                ?>
+                                    <div class="user active" onclick="selectManager(this)" data-uid="<?php echo $userID?>"><p><?php echo $name?></p></div>
+                                <?php
+                            } else {
+                                ?>
+                                    <div class="user" onclick="selectManager(this)" data-uid="<?php echo $userID?>"><p><?php echo $name?></p></div>
+                                <?php
+                            }
+                    } ?>
 		   	    </div>
             </div>
             <?php

@@ -14,7 +14,36 @@ class Location
     }
 
     static function getUsers($locationID){
-        return array(); # return list of users from location
+        $location = DB::Get("SELECT * FROM egw_attendance_locations WHERE id = $locationID");
+        return $location;
+    }
+
+    static function addUser($user, $locationID){
+        // Get existing users and merge new ones
+        $location = DB::Get("SELECT users FROM egw_attendance_locations WHERE id = $locationID");
+        if ($location) {
+            $users = json_decode($location['users'], true);
+            $users[] = $user;
+
+            // Update the users array
+            $users_json = json_encode($users);
+            DB::Run("UPDATE egw_attendance_locations SET users = '$users_json' WHERE id = $locationID");
+            return true;
+        }
+        return false;
+    }
+
+    static function UserInLocation($userID, $locationID) {
+        $location = Location::getUsers($locationID);
+        if (!empty($location)) {
+            $users = json_decode($location['users'], true);
+            foreach ($users as $key => $user) {
+                if ($user == $userID) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     static function add($location) {
