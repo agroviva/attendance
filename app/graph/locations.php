@@ -8,6 +8,7 @@ use AgroEgw\Api\User;
 
 
 $contracts = new Contracts();
+var_dump($contracts);
 
 Graph::Render('header');
 
