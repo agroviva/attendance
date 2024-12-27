@@ -4,6 +4,8 @@ use AgroEgw\DB;
 use Attendance\Graph;
 use Attendance\Contracts;
 use Attendance\Location;
+use AgroEgw\Api\User;
+
 
 $contracts = new Contracts();
 
@@ -45,6 +47,54 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 ?>
+<style type="text/css">
+	div.locations {
+		width: 90%;
+		padding: 20px;
+	}
+
+	.not-selectable {
+	  -webkit-touch-callout: none;
+	  -webkit-user-select: none;
+	  -khtml-user-select: none;
+	  -moz-user-select: none;
+	  -ms-user-select: none;
+	  user-select: none;
+	}
+	.locations .user {
+	    display: flex;
+	}
+
+	.locations {
+		padding-top: 4px;
+		display: inline-block;
+		width: 100%;
+	}
+	.locations .user {
+		border-radius: 5px;
+		background: sandybrown;
+		float: left;
+		margin-right: 5px;
+		margin-bottom: 4px;
+		padding: 4px;
+		cursor: pointer;
+	}
+	.locations .user.active {
+		background: #008c96;
+	}
+	.locations .user p {
+		font-size: 12px;
+		border-radius: 4px;
+		float: left;
+		line-height: 2;
+		font-weight: 500;
+		color: white;
+		margin-bottom: 0;
+	}
+	[data-marked]{
+		background: linear-gradient(135deg, #4caf50, #00d486 60%, #00bcd4);
+	}
+</style>
 
 <!-- HTML for Add Location Form -->
 <div class="form-container">
@@ -63,7 +113,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         foreach ($locations as $location) {
             $locationID = $location['id'];
             ?>
-            <div class="form-group bmd-form-group" data-uid="<?php echo $location['id']?>">
+            <div class="locations form-group bmd-form-group" data-uid="<?php echo $location['id']?>">
                 <label for="location" class="bmd-label-static"><?php echo $location['location']?></label>
                 <input type="text" class="form-control" id="location">
                 <div class="location not-selectable">
