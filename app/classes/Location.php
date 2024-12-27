@@ -18,13 +18,21 @@ class Location
         return $location;
     }
 
-    static function addUser($user, $locationID){
+    static function updateLocation($userID, $locationID){
         // Get existing users and merge new ones
         $location = DB::Get("SELECT users FROM egw_attendance_locations WHERE id = $locationID");
         if ($location) {
-            $users = json_decode($location['users'], true);
-            $users[] = $user;
-
+            if (static::UserInLocation($userID, $locationID)) {
+                $users = json_decode($location['users'], true);
+                foreach ($users as $key => $user) {
+                    if ($user == $userID) {
+                        unset($users[$key]); # remove user
+                    }
+                }
+            } else {
+                $users = json_decode($location['users'], true);
+                $users[] = $userID; # add user
+            }
             // Update the users array
             $users_json = json_encode($users);
             DB::Run("UPDATE egw_attendance_locations SET users = '$users_json' WHERE id = $locationID");

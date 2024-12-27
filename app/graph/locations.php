@@ -91,7 +91,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         foreach ($locations as $location) {
             $locationID = $location['id'];
             ?>
-            <div class="locations form-group bmd-form-group" data-locationid="<?php echo $locationID?>">
+            <div class="locations form-group bmd-form-group">
                 <strong><?php echo $location['location']?></strong>
                 <div class="location not-selectable">
                     <?php foreach ($contracts as $contract) { ?>
@@ -102,11 +102,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                             if (Location::UserInLocation($userID, $locationID)) {
                                 ?>
-                                    <div class="user active" onclick="selectManager(this)" data-uid="<?php echo $userID?>"><p><?php echo $name?></p></div>
+                                    <div class="user active" onclick="updateLocation(this)" data-uid="<?php echo $userID?>"  data-locationid="<?php echo $locationID?>"><p><?php echo $name?></p></div>
                                 <?php
                             } else {
                                 ?>
-                                    <div class="user" onclick="selectManager(this)" data-uid="<?php echo $userID?>"><p><?php echo $name?></p></div>
+                                    <div class="user" onclick="updateLocation(this)" data-uid="<?php echo $userID?>"  data-locationid="<?php echo $locationID?>"><p><?php echo $name?></p></div>
                                 <?php
                             }
                     } ?>
@@ -171,16 +171,35 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
         });
 
-        // Validate user assignment
-        $('#assign-user-form').on('submit', function(e) {
-            var userName = $('#user_name').val();
-            var locationId = $('#location_id').val();
-            
-            if (userName.trim() === '' || locationId === '') {
-                alert('Please fill in all fields.');
-                e.preventDefault();
+        function selectManager(elem) {
+            elem = $(elem);
+            var userID = elem.data("uid");
+            var locationID = elem.data("locationid");
+
+            if (userID) {
+                $.ajax({
+                    type: "POST",
+                    url: "/egroupware/attendance/",
+                    data: {
+                        route: "location.update",
+                        userID: userID,
+                        locationID: locationID
+                    },
+                    success: function(data) {
+                        if (data.response = "success") {
+                            if (data.action == "removed") {
+                                elem.removeClass("active");
+                            } else {
+                                elem.addClass("active");
+                            }
+                        }
+                    },
+                    error: function() {
+                        alert('error handling here');
+                    }
+                });
             }
-        });
+        }
     });
 
 
