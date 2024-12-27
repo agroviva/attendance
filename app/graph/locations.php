@@ -170,8 +170,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 e.preventDefault();
             }
         });
+    });
 
-        function updateLocation(elem) {
+    function updateLocation(elem) {
             elem = $(elem);
             var userID = elem.data("uid");
             var locationID = elem.data("locationid");
@@ -200,9 +201,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 });
             }
         }
-    });
-
-
 </script>
 
 <?php
