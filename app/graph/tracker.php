@@ -1,6 +1,7 @@
 <?php
 use Attendance\Core;
 use Attendance\Tracker;
+use Attendance\Location;
 
 $so = new attendance_so();
 
@@ -149,6 +150,14 @@ $so = new attendance_so();
 <div class="modal-backdrop fade"></div>
 
 <div id="content">
+	<?php
+	$locationUsers = Location::getUsersFromSameLocation();
+		if (!empty($locationUsers)) {
+			?>
+			<h2>Standort: <?php echo $locationUsers['location'];?></h2>"
+			<?php
+		}
+	?>
 	<div id="user_wrapper" class="tracker">
 
 		<?php
