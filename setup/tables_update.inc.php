@@ -248,6 +248,11 @@ function attendance_upgrade16_1_012()
 		'uc' => [],
 	], 'pl_id');
 
+	return $GLOBALS['setup_info']['attendance']['currentver'] = '16.1.013';
+}
+
+function attendance_upgrade16_1_013()
+{
 	return $GLOBALS['setup_info']['attendance']['currentver'] = '21.1.001';
 }
 
