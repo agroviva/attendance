@@ -374,6 +374,9 @@ class attendance_so
 	 */
 	public function Get_Vacation_Time($user, $cat_id, $start, $end)
 	{
+		// Append "23:59:59" to $end to ensure the full day is included
+		$end .= " 23:59:59";
+		
 		$output = (new DB("
             SELECT * FROM egw_timesheet 
             WHERE (ts_owner = '$user') 
