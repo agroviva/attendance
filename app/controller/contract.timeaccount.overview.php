@@ -4,6 +4,10 @@ use Attendance\Contract;
 use Attendance\TimeAccount;
 use Carbon\Carbon;
 
+use EGroupware\Api\Asyncservice;
+$async = new Asyncservice();
+$async->set_timer(['minute' => '*/5'], 'attendance', 'attendance.attendance_sync.every5Minute', null);
+
 setlocale(LC_TIME, 'de_DE');
 Carbon::setLocale('de');
 

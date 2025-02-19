@@ -174,9 +174,6 @@ class attendance_sync
 
 	public function synchron()
 	{
-
-		Tracker::timeOutTrackerAfter10Hours();
-
 		// $this->testdebug();
 		$to = date('Y-m-d');
 		$from = date('Y-m-d', strtotime($to.' - 90 days'));
@@ -191,6 +188,10 @@ class attendance_sync
 				$this->init($date);
 			}
 		}
+	}
+
+	public function every5Minute() {
+		Tracker::timeOutTrackerAfter10Hours();
 	}
 
 	public function testdebug()
