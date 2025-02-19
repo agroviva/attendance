@@ -47,7 +47,7 @@ if (!$contractID) {
 	}
 }
 
-$annualLeave = (int) $post['annualLeave'] ?: $error('Jahresurlaub wurde nicht eingegeben');
+$annualLeave = (int) $post['annualLeave'] ?: 0;
 $extraVacation = (int) $post['extraVacation'] ?: 0;
 $startOfContract = $post['startOfContract'] ? Carbon::parse($post['startOfContract']) : $error('Das Startdatum ist nicht eingegeben!');
 $endOfContract = $post['endOfContract'] ? Carbon::parse($post['endOfContract']) : null;
