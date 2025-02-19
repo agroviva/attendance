@@ -159,7 +159,7 @@ class Tracker
 				
 				(new DB("
 					UPDATE egw_timesheet 
-					SET ts_start = $newStart 
+					SET ts_start = $newStart, ts_duration = $duration
 					WHERE ts_id = '$currentID'
 				"));
 			}
