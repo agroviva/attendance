@@ -154,7 +154,7 @@ class Tracker
 			// If break is too short, move the next timesheet forward
 			if ($existingBreak < $break_to_add) {
 				$total_left_break = $break_to_add - $existingBreak;
-				$newStart = $previousEnd + ($total_left_break * 60);
+				$newStart = $currentStart + ($total_left_break * 60);
 				$duration = $currentTimesheet['ts_duration'] - $total_left_break; #deduct the rest of the break form last timesheet
 				
 				(new DB("
