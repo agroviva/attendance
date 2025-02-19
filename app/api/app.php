@@ -5,6 +5,8 @@ use AgroEgw\DB;
 use Attendance\Ajax;
 use Attendance\Core\Update;
 use EGroupware\Api\Asyncservice;
+date_default_timezone_set('Europe/Berlin');
+
 
 require_once __DIR__.'/../../../agroviva/vendor/autoload.php';
 

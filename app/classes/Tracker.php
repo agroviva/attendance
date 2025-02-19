@@ -55,7 +55,108 @@ class Tracker
 
 		$status = 'Not active';
 		self::Status($status, $user);
+
+		self::addAutomaticBreaks($user, $row);
 	}
+
+	public static function addAutomaticBreaks($user, $activeTime) {
+		$id = $activeTime['ts_id'];
+	
+		// Fetch all timesheets for today, sorted by start time
+		$result = (new DB("
+			SELECT * FROM egw_timesheet 
+			WHERE ts_owner = '$user' 
+			AND ts_start >= UNIX_TIMESTAMP(CURDATE())
+			ORDER BY ts_start ASC
+		"))->FetchAll();
+	
+		$timesheetCount = count($result);
+	
+		if ($timesheetCount == 1) {  
+			// ✅ Case 1: Only ONE timesheet (Split it into two with a break)
+			self::splitSingleTimesheet($user, $result[0]);
+		} elseif ($timesheetCount > 1) {  
+			// ✅ Case 2: TWO timesheets (Calculate break between them)
+			self::calculateBreakBetween($result);
+		}
+	}
+
+	/**
+	 * Splits a single timesheet into two and inserts a calculated break.
+	 */
+	public static function splitSingleTimesheet($user, $timesheet) {
+		$timesheetID = $timesheet['ts_id'];
+		$total_minutes = $timesheet['ts_duration'];
+		$minutes_to_deduct = 0;
+
+		// Apply break rules
+		if ($total_minutes >= 360 && $total_minutes < 540) { // 6-9 hours (360-540 min)
+			$minutes_to_deduct = 30;
+		} elseif ($total_minutes >= 540 && $total_minutes < 600) { // 9-10 hours (540-600 min)
+			$minutes_to_deduct = 45;
+		}
+
+		if ($minutes_to_deduct > 0) {
+			$split_time = $timesheet['ts_start'] + (($total_minutes / 2) * 60); // Midpoint of shift in seconds
+			$break_start = $split_time;
+			$break_end = $break_start + ($minutes_to_deduct * 60); // Break time in seconds
+			$half_duration = floor($total_minutes / 2); // Avoid floating point errors
+
+			// Update the original timesheet to end at the split point
+			(new DB("
+				UPDATE egw_timesheet 
+				SET ts_duration = $half_duration 
+				WHERE ts_id = '$timesheetID'
+			"));
+
+			// Insert new timesheet after break
+			(new DB("
+				INSERT INTO egw_timesheet (ts_start, ts_title, ts_quantity, ts_duration, cat_id, ts_owner, ts_created, ts_modified, ts_modifier, ts_status, pl_id) 
+				VALUES ('$break_end', '".$timesheet['ts_title']."', 0, '$half_duration', '".$timesheet['cat_id']."', '$user', '".$timesheet['ts_created']."', '".$timesheet['ts_modified']."', '".$timesheet['ts_modifier']."', '".$timesheet['ts_status']."', NULL)
+			"));
+		}
+	}
+
+	/**
+	 * Ensures a break exists between multiple timesheets.
+	 */
+	public static function calculateBreakBetween($result) {
+		$total_minutes = 0;
+		foreach ($result as $timesheet) {
+			$total_minutes += $timesheet['ts_duration'];
+		}
+
+		// Determine required break time
+		$break_to_add = 0;
+		if ($total_minutes >= 360 && $total_minutes < 540) { 
+			$break_to_add = 30;
+		} elseif ($total_minutes >= 540 && $total_minutes < 600) { 
+			$break_to_add = 45;
+		}
+
+		if ($break_to_add > 0) {
+			for ($i = 1; $i < count($result); $i++) {
+				$previousTimesheet = $result[$i - 1];
+				$previousEnd = $previousTimesheet['ts_start'] + ($previousTimesheet['ts_duration'] * 60);
+				$currentTimesheet = $result[$i];
+				$currentStart = $currentTimesheet['ts_start'];
+				$currentID = $currentTimesheet['ts_id'];
+
+				$existingBreak = ($currentStart - $previousEnd) / 60; // Convert to minutes
+
+				// If break is too short, move the next timesheet forward
+				if ($existingBreak < $break_to_add) {
+					$newStart = $previousEnd + ($break_to_add * 60);
+					
+					(new DB("
+						UPDATE egw_timesheet 
+						SET ts_start = $newStart 
+						WHERE ts_id = '$currentID'
+					"));
+				}
+			}
+		}
+}
 
 	// This will add values to status to see on the first page if the user is online or not
 	public static function Status($status, $ts_owner)
@@ -120,6 +221,48 @@ class Tracker
 		}
 
 		return $accounts;
+	}
+
+	/**
+	 * Logout Account after 10 Hours reached
+	 */
+	public static function timeOutTrackerAfter10Hours() {
+
+		// Fetch all accounts that are currently active
+		$accounts = (new DB("
+			SELECT * FROM egw_addressbook a 
+			RIGHT OUTER JOIN egw_attendance b ON a.account_id = b.user 
+			WHERE b.end is NULL OR b.end >= CURDATE()
+			ORDER BY b.sort_order
+		"))->FetchAll();
+
+		if (!$accounts) {
+			return; // No active accounts, exit early.
+		}
+	
+		foreach ($accounts as $account) {
+			$online = self::isOnline($account['account_id']);
+			if ($online) {
+				$ts_owner = $online['ts_owner']; // Ensure ts_owner is set correctly
+
+				// Get total work time from timesheets (optimized query)
+				$timesheets = (new DB("
+					SELECT * FROM egw_timesheet 
+					WHERE ts_owner = '$ts_owner' 
+					AND ts_start >= UNIX_TIMESTAMP(CURDATE())
+				"))->FetchAll();
+
+				$total_minutes = 0;
+
+				foreach ($timesheets as $timesheet) {
+					$total_minutes += $timesheet['ts_duration'];
+				}
+
+				if ($total_minutes >= 600) {
+					static::OUT($ts_owner);
+				}
+			}
+		}
 	}
 
 	// Checks if the user is logged in or not
