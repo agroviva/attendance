@@ -6,7 +6,7 @@ use Carbon\Carbon;
 
 use EGroupware\Api\Asyncservice;
 $async = new Asyncservice();
-$async->set_timer(['min' => '*/5'], 'attendance', 'attendance.attendance_sync.every5Minute', null);
+$async->set_timer(['min' => '*/5'], 'attendance_every5Minute', 'attendance.attendance_sync.every5Minute', null);
 
 setlocale(LC_TIME, 'de_DE');
 Carbon::setLocale('de');
