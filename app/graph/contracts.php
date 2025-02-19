@@ -197,7 +197,7 @@ Graph::Render('header');
 					<?php
 					$user = User::Read($contract['user']);
 					$user['account_fullname'] = $user['account_lastname'].', '.$user['account_firstname'];
-					$account_id = $user['account_id'];
+					$account_id = $user['contact_id'];
 					$contact_id = $user['person_id'];
 					$status = $contract['status'] == 'Active' ? 'online' :
 					($contract['status'] == 'expired' ? 'expired hidden' : 'offline');

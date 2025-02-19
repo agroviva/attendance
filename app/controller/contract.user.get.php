@@ -8,6 +8,7 @@ $args = $_POST;
 
 $contract_id = explode('_', $args['contract_id'])[1];
 $contract = Contract::Get($contract_id);
+$user = $contract['user'];
 if (empty($contract)) {
 	exit();
 }
@@ -73,12 +74,13 @@ foreach ($weekplan as $key => $days) {
 }
 
 $user = User::Read($contract['user']);
+$contact_id = $user['contact_id'];
 unset($user['account_pwd']);
 $user['contract_id'] = $contract_id;
 
 $user_html = '
 <div class="username" data-uid="{account_id}" data-id="{contract_id}">
-	<div class="worker-photo" style="box-sizing: border-box;background-image: url(/egroupware/api/avatar.php?contact_id={account_id}&amp;etag=8);"></div><span class="name">{account_firstname} {account_lastname}</span>
+	<div class="worker-photo" style="box-sizing: border-box;background-image: url(/egroupware/api/avatar.php?contact_id={contact_id}&amp;etag=8);"></div><span class="name">{account_firstname} {account_lastname}</span>
 </div>
 ';
 
