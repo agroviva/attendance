@@ -164,7 +164,7 @@ $so = new attendance_so();
 			if ($rows) {
 				foreach ($rows as $user) {
 					// $image_src = (!empty($user['contact_jpegphoto']) ? "data:image/jpeg;base64,".base64_encode($user['contact_jpegphoto'])."" : "/egroupware/attendance/templates/default/images/photo.png");
-					$image_src = '/egroupware/api/avatar.php?id='.$user['account_id'].'&etag=8'; ?>
+					$image_src = '/egroupware/api/avatar.php?contact_id='.$user['account_id'].'&etag=8'; ?>
 
 				<div class="user_box" id="user_<?php echo $user['account_id']; ?>" onclick="open_user(<?php echo $user['account_id']; ?>);" >
 					<div id="user_<?php echo $user['account_id']; ?>" class="user">

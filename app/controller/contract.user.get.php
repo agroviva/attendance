@@ -78,7 +78,7 @@ $user['contract_id'] = $contract_id;
 
 $user_html = '
 <div class="username" data-uid="{account_id}" data-id="{contract_id}">
-	<div class="worker-photo" style="box-sizing: border-box;background-image: url(/egroupware/api/avatar.php?id={account_id}&amp;etag=8);"></div><span class="name">{account_firstname} {account_lastname}</span>
+	<div class="worker-photo" style="box-sizing: border-box;background-image: url(/egroupware/api/avatar.php?contact_id={account_id}&amp;etag=8);"></div><span class="name">{account_firstname} {account_lastname}</span>
 </div>
 ';
 
