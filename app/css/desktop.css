@@ -216,7 +216,6 @@ form#table {
 */
 
 #password {
-    display: inline-flex;
     width: 100%;
     padding-top: 15px;
 }
@@ -508,13 +507,8 @@ div#user_wrapper div.user_box {
     display: inline-block;
 }
 
-.boxcontent {
-    width: 35%;
-}
-
 #nmpd1 {
     display: block!important;
-    width: 64%;
 }
 
 #nmpd1 .nmpd-grid {

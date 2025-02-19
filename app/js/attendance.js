@@ -83,7 +83,6 @@ function checkOpen(premission, user_id, contact_id, username, color){
 		jQuery('#user_ui.modal #password #user_image').attr('src', image_src);
 		jQuery('#user_ui.modal #password .user_details p span').html(username);
 		jQuery('#user_ui.modal #password .user').attr("id", "user_"+user_id);
-		jQuery('#user_ui.modal #password').css('display', 'inline-flex');
 		jQuery('#user_ui.modal .content-box').css('display', 'none');
 		jQuery('#user_ui.modal #password .user .status_back').css('background', color);
 
