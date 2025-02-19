@@ -95,7 +95,7 @@ class Tracker
 		// Apply break rules
 		if ($total_minutes >= 360 && $total_minutes < 540) { // 6-9 hours (360-540 min)
 			$minutes_to_deduct = 30;
-		} elseif ($total_minutes >= 540 && $total_minutes < 600) { // 9-10 hours (540-600 min)
+		} elseif ($total_minutes >= 540) { // 9 hours (540 min)
 			$minutes_to_deduct = 45;
 		}
 
@@ -134,7 +134,7 @@ class Tracker
 		$break_to_add = 0;
 		if ($total_minutes >= 360 && $total_minutes < 540) { 
 			$break_to_add = 30;
-		} elseif ($total_minutes >= 540 && $total_minutes < 600) { 
+		} elseif ($total_minutes >= 540) { 
 			$break_to_add = 45;
 		}
 		
@@ -266,7 +266,7 @@ class Tracker
 					$total_minutes += $timesheet['ts_duration'];
 				}
 
-				if ($total_minutes >= 600) {
+				if ($total_minutes >= 645) {
 					static::OUT($ts_owner);
 				}
 			}

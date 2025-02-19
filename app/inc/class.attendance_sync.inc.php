@@ -16,6 +16,7 @@ use AgroEgw\DB;
 use Attendance\Categories;
 use Attendance\Contract;
 use Attendance\Holidays;
+use Attendance\Tracker;
 use Carbon\Carbon;
 use Carbon\CarbonPeriod;
 
@@ -173,6 +174,9 @@ class attendance_sync
 
 	public function synchron()
 	{
+
+		Tracker::timeOutTrackerAfter10Hours();
+
 		// $this->testdebug();
 		$to = date('Y-m-d');
 		$from = date('Y-m-d', strtotime($to.' - 90 days'));
