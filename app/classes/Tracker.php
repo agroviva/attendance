@@ -62,14 +62,16 @@ class Tracker
 	public static function addAutomaticBreaks($user) {
 	
 		// Fetch all timesheets for today, sorted by start time
+		$status = self::TimesheetStatusID('attendance');
+	 
 		$result = (new DB("
 			SELECT * FROM egw_timesheet 
 			WHERE ts_owner = '$user' 
-			AND ts_start >= UNIX_TIMESTAMP(CURDATE())
+			AND ts_start >= UNIX_TIMESTAMP(CURDATE()) AND ts_status = $status
 			ORDER BY ts_start ASC
 		"))->FetchAll();
 
-		var_dump($result);
+		# var_dump($result);
 	
 		$timesheetCount = count($result);
 	
