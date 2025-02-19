@@ -74,7 +74,7 @@ foreach ($weekplan as $key => $days) {
 }
 
 $user = User::Read($contract['user']);
-$contact_id = $user['contact_id'];
+$contact_id = $contract['contact_id'];
 unset($user['account_pwd']);
 $user['contract_id'] = $contract_id;
 

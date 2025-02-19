@@ -197,7 +197,7 @@ Graph::Render('header');
 					<?php
 					$user = User::Read($contract['user']);
 					$user['account_fullname'] = $user['account_lastname'].', '.$user['account_firstname'];
-					$account_id = $user['contact_id'];
+					$account_id = $user['account_id'];
 					$contact_id = $user['person_id'];
 					$status = $contract['status'] == 'Active' ? 'online' :
 					($contract['status'] == 'expired' ? 'expired hidden' : 'offline');
@@ -205,7 +205,7 @@ Graph::Render('header');
 					?>
 					<tr id="entry_<?php echo $contract['id']?>" data-account="<?php echo $account_id?>" data-contact="<?php echo $contact_id?>" class="<?php echo $status?>">
 						<td class="username">
-							<div class="worker-photo" style="box-sizing: border-box;background-image: url(/egroupware/api/avatar.php?contact_id=<?php echo $account_id?>&etag=8);"></div>
+							<div class="worker-photo" style="box-sizing: border-box;background-image: url(/egroupware/api/avatar.php?contact_id=<?php echo $contract['contact_id']?>&etag=8);"></div>
 							<span class="name"><?php echo $user['account_fullname']?></span>
 						</td>
 						<!-- <td><?php echo $contract['status']?></td> -->
