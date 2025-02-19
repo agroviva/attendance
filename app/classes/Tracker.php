@@ -89,7 +89,7 @@ class Tracker
 	 */
 	public static function splitSingleTimesheet($user, $timesheet) {
 		$timesheetID = $timesheet['ts_id'];
-		$total_minutes = $timesheet['ts_duration'];
+		$total_minutes = min($timesheet['ts_duration'], 645); # Value nor more than 10 hours and 45 minutes
 		$minutes_to_deduct = 0;
 
 		// Apply break rules
@@ -105,6 +105,7 @@ class Tracker
 			$break_end = $break_start + ($minutes_to_deduct * 60); // Break time in seconds
 			$half_duration = floor($total_minutes / 2); // Avoid floating point errors
 			$deducted_duration = $half_duration - $minutes_to_deduct; // deduct break time from second timesheet
+
 
 			// Update the original timesheet to end at the split point
 			(new DB("
