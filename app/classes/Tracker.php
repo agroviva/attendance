@@ -56,11 +56,10 @@ class Tracker
 		$status = 'Not active';
 		self::Status($status, $user);
 
-		self::addAutomaticBreaks($user, $row);
+		self::addAutomaticBreaks($user);
 	}
 
-	public static function addAutomaticBreaks($user, $activeTime) {
-		$id = $activeTime['ts_id'];
+	public static function addAutomaticBreaks($user) {
 	
 		// Fetch all timesheets for today, sorted by start time
 		$result = (new DB("
@@ -69,6 +68,8 @@ class Tracker
 			AND ts_start >= UNIX_TIMESTAMP(CURDATE())
 			ORDER BY ts_start ASC
 		"))->FetchAll();
+
+		var_dump($result);
 	
 		$timesheetCount = count($result);
 	
