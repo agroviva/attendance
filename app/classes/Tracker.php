@@ -104,6 +104,7 @@ class Tracker
 			$break_start = $split_time;
 			$break_end = $break_start + ($minutes_to_deduct * 60); // Break time in seconds
 			$half_duration = floor($total_minutes / 2); // Avoid floating point errors
+			$deducted_duration = $half_duration - $minutes_to_deduct; // deduct break time from second timesheet
 
 			// Update the original timesheet to end at the split point
 			(new DB("
@@ -115,7 +116,7 @@ class Tracker
 			// Insert new timesheet after break
 			(new DB("
 				INSERT INTO egw_timesheet (ts_start, ts_title, ts_quantity, ts_duration, cat_id, ts_owner, ts_created, ts_modified, ts_modifier, ts_status, pl_id) 
-				VALUES ('$break_end', '".$timesheet['ts_title']."', 0, '$half_duration', '".$timesheet['cat_id']."', '$user', '".$timesheet['ts_created']."', '".$timesheet['ts_modified']."', '".$timesheet['ts_modifier']."', '".$timesheet['ts_status']."', NULL)
+				VALUES ('$break_end', '".$timesheet['ts_title']."', 0, '$deducted_duration', '".$timesheet['cat_id']."', '$user', '".$timesheet['ts_created']."', '".$timesheet['ts_modified']."', '".$timesheet['ts_modifier']."', '".$timesheet['ts_status']."', NULL)
 			"));
 		}
 	}
@@ -136,7 +137,9 @@ class Tracker
 		} elseif ($total_minutes >= 540 && $total_minutes < 600) { 
 			$break_to_add = 45;
 		}
-
+		
+		$existingBreak = 0;
+	
 		if ($break_to_add > 0) {
 			for ($i = 1; $i < count($result); $i++) {
 				$previousTimesheet = $result[$i - 1];
@@ -145,18 +148,20 @@ class Tracker
 				$currentStart = $currentTimesheet['ts_start'];
 				$currentID = $currentTimesheet['ts_id'];
 
-				$existingBreak = ($currentStart - $previousEnd) / 60; // Convert to minutes
+				$existingBreak += ($currentStart - $previousEnd) / 60; // Convert to minutes
+			}
 
-				// If break is too short, move the next timesheet forward
-				if ($existingBreak < $break_to_add) {
-					$newStart = $previousEnd + ($break_to_add * 60);
-					
-					(new DB("
-						UPDATE egw_timesheet 
-						SET ts_start = $newStart 
-						WHERE ts_id = '$currentID'
-					"));
-				}
+			// If break is too short, move the next timesheet forward
+			if ($existingBreak < $break_to_add) {
+				$total_left_break = $break_to_add - $existingBreak;
+				$newStart = $previousEnd + ($total_left_break * 60);
+				$duration = $currentTimesheet['ts_duration'] - $total_left_break; #deduct the rest of the break form last timesheet
+				
+				(new DB("
+					UPDATE egw_timesheet 
+					SET ts_start = $newStart 
+					WHERE ts_id = '$currentID'
+				"));
 			}
 		}
 }
