@@ -27,11 +27,18 @@ require_once __DIR__.'/../classes/autoload.php';
 
 $async = new asyncservice();
 
-$async->delete('attendance_api');
+
 if (($async->read('attendance')['attendance']['method'] != 'attendance.attendance_sync.synchron')) {
 	$async->delete('attendance');
 	$async->set_timer(['hour' => '*/2'], 'attendance', 'attendance.attendance_sync.synchron', null);
 }
+
+if (($async->read('attendance_every5Minute')['attendance']['method'] != 'attendance.attendance_sync.every5Minute')) 
+{
+	$async->set_timer(['min' => '*/5'], 'attendance_every5Minute', 'attendance.attendance_sync.every5Minute', null);
+}
+
+
 
 $db = (new DB("SHOW TABLES LIKE 'egw_attendance'"))->Fetch();
 if (empty($db)) {
