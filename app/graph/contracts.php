@@ -48,7 +48,7 @@ Graph::Render('header');
 							<div class="form-row">
 								<div class="form-group col-md-6">
 									<label>Jahresurlaub</label> 
-									<input class="form-control" name="vacations" type="number" id="vacationInput" min="0" required>
+									<input class="form-control" name="vacations" type="number" id="vacationInput" min="0" placeholder="0">
 								</div>
 								<div class="form-group col-md-6">
 									<label>Urlaubskorrektur zu Beginn</label> 
