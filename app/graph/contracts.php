@@ -205,7 +205,7 @@ Graph::Render('header');
 					?>
 					<tr id="entry_<?php echo $contract['id']?>" data-account="<?php echo $account_id?>" data-contact="<?php echo $contact_id?>" class="<?php echo $status?>">
 						<td class="username">
-							<div class="worker-photo" style="box-sizing: border-box;background-image: url(/egroupware/attendance/image.php?id=<?php echo $account_id?>&etag=8);"></div>
+							<div class="worker-photo" style="box-sizing: border-box;background-image: url(/egroupware/api/avatar.php?id=<?php echo $account_id?>&etag=8);"></div>
 							<span class="name"><?php echo $user['account_fullname']?></span>
 						</td>
 						<!-- <td><?php echo $contract['status']?></td> -->
