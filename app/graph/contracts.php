@@ -2,9 +2,13 @@
 use AgroEgw\Api\User;
 use Attendance\Contracts;
 use Attendance\Graph;
+use Attendance\Tracker;
+
 
 $contracts = new Contracts();
 $contracts = $contracts->Load();
+Tracker::timeOutTrackerAfter10Hours();
+
 
 if (!empty($contracts)) {
 	/*

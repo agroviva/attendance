@@ -3,12 +3,7 @@ use Attendance\Core;
 use Attendance\Tracker;
 use Attendance\Location;
 
-
-
 $so = new attendance_so();
-
-Tracker::timeOutTrackerAfter10Hours();
-
 
 ?>
 <!DOCTYPE html>

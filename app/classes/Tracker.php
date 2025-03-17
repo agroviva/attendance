@@ -63,11 +63,14 @@ class Tracker
 	
 		// Fetch all timesheets for today, sorted by start time
 		$status = self::TimesheetStatusID('attendance');
+		$startOfDay = Carbon::now()->startOfDay()->timestamp;
+
 	 
 		$result = (new DB("
 			SELECT * FROM egw_timesheet 
 			WHERE ts_owner = '$user' 
-			AND ts_start >= UNIX_TIMESTAMP(CURDATE()) AND ts_status = $status
+			AND ts_start >= '$startOfDay'
+			AND ts_status = $status
 			ORDER BY ts_start ASC
 		"))->FetchAll();
 
@@ -251,21 +254,29 @@ class Tracker
 	
 		foreach ($accounts as $account) {
 			$online = self::isOnline($account['account_id']);
+			$status = self::TimesheetStatusID('attendance');
+
 			if ($online) {
 				$ts_owner = $online['ts_owner']; // Ensure ts_owner is set correctly
+				$startOfDay = Carbon::now()->startOfDay()->timestamp;
 
 				// Get total work time from timesheets (optimized query)
 				$timesheets = (new DB("
 					SELECT * FROM egw_timesheet 
 					WHERE ts_owner = '$ts_owner' 
-					AND ts_start >= UNIX_TIMESTAMP(CURDATE())
+					AND ts_start >= '$startOfDay' 
+					AND ts_status = $status
 				"))->FetchAll();
+				$title = lang('Ongoing Work');
 
 				$total_minutes = 0;
 
 				foreach ($timesheets as $timesheet) {
 					$total_minutes += $timesheet['ts_duration'];
 				}
+
+				$total_minutes += (Carbon::now()->timestamp - $online['ts_start']) / 60 ;
+
 
 				if ($total_minutes >= 645) {
 					static::OUT($ts_owner);
