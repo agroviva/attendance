@@ -332,6 +332,7 @@ class attendance_so
 	{ // here we proof if a timesheet is inserted with given categorie or not
 
 	var_dump(array($date,$ts_owner, $cat_id));
+	die;
 	 
 		if (is_array($cat_id)) {
 			$cat_sql = '(';
