@@ -349,7 +349,7 @@ class attendance_so
             WHERE ts_owner = $ts_owner
                 AND (ts_status != -1 OR ts_status IS NULL) 
                 AND $cat_sql 
-                AND (from_unixtime(ts_start,'%Y-%m-%d') = '$date')
+                AND (from_unixtime((ts_start+28800),'%Y-%m-%d') = '$date')
         "))->FetchAll();
 
 		return $result ? count($result) : 0;
